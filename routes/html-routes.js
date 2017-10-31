@@ -5,7 +5,7 @@ module.exports = function(app) {
 	
 	app.get('/', function(req, res) {
 		console.log('/ GET FUNC RUNS /')
-		  res.sendFile(path.join(__dirname, "../views/index.html"));
+		  res.sendFile(path.join(__dirname, "../index.html"));
   });
 	
 };
