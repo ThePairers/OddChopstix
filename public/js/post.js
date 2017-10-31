@@ -11,7 +11,6 @@ $(document).ready(function() {
 
 		var newPairing = {};
 	});
-});
 
 // Queries Food table and pulls food id
 var getFoodId = function(food, alch, callback) {
@@ -35,13 +34,14 @@ var getAlchId = function(foodId, alch, callback) {
 }
 
 // posts the new pairing with the food and alch ids
-var postNewPairing = function(foodId, alchId) {
-	var newPairing = {
-		alc_id: alchId,
-		food_id: foodId,
-		rating: newRating,
-		review: newReview
+	var postNewPairing = function(foodId, alchId) {
+		var newPairing = {
+			alc_id: alchId,
+			food_id: foodId,
+			rating: newRating,
+			review: newReview
+		};
+		$.post('/api/pairing', newPairing);
 	};
-	$.post('/api/pairing', newPairing);
 
-};
+});
