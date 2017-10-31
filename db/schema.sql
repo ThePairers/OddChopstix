@@ -4,7 +4,7 @@ CREATE DATABASE OddChopStix_db;
 
 USE OddChopStix_db;
 
-CREATE TABLE food(
+CREATE TABLE foods(
 	id INTEGER(11) AUTO_INCREMENT NOT NULL,
 	food_name VARCHAR(50) NOT NULL,
 	food_photo LONGBLOB,
@@ -13,7 +13,7 @@ CREATE TABLE food(
 
 );
 
-CREATE TABLE alcohol(
+CREATE TABLE alcohols(
 	id INTEGER(11) AUTO_INCREMENT NOT NULL,
 	alc_name VARCHAR(50) NOT NULL,
 	alc_photo LONGBLOB,
