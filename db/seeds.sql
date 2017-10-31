@@ -1,0 +1,1 @@
+INSERT INTO pairings (alc_id, food_id, rating, review) VALUES (1, 1, '4', 'The heavy hops from the IPA was not well balanced with the rich and heavy pastrami burger. Recc less hoppy beer for next time.');

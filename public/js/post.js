@@ -1,7 +1,9 @@
 $(document).ready(function() {
 
 	// when submit button is clicked at input
-	$('#submit').on('click', function() {
+	$('#submit').on('click', function(event) {
+		event.preventDefault();
+		
 		var alch = $('#alchInput').val().trim();
 		var food = $('#foodInput').val().trim();
 		var newRating = $('#rating').val().trim();

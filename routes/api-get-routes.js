@@ -11,7 +11,7 @@ var db = require("../models");
 // Routes
 // =============================================================
 module.exports = function(app) {
-
+// gets all foods with same name
 	app.get('/api/food/:food_name', function(req, res) {
 
 		db.Food.findAll({
@@ -23,7 +23,7 @@ module.exports = function(app) {
 			console.log(dbPost);
 		})
 	})
-
+// gets all alcohols with same name
 	app.get('/api/alcohol/:alcohol_name', function(req, res) {
 
 		db.Alcohol.findAll({
@@ -35,7 +35,7 @@ module.exports = function(app) {
 			console.log(dbPost);
 		})
 	})
-
+// gets all pairings with same name
 	app.get('/api/food/:pairing_name', function(req, res) {
 
 		db.Pairing.findAll({
@@ -45,6 +45,14 @@ module.exports = function(app) {
 		}).then(function(dbPost) {
 			res.json(dbPost);
 			console.log(dbPost);
+		});
+	});
+
+	app.get("/api/food", function(req, res) {
+		db.Food.findAll({
+		}).then(function(dbPost) {
+			res.json(dbPost);
+			console.log(dbPost);
 		})
 	})
-}
+};
