@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/ThePairers/OddChopstix#readme",
   "dependencies": {
+    "cloudinary": "^1.9.1",
     "express": "^4.16.2",
     "mysql": "^2.15.0",
     "sequelize": "^4.20.1"
