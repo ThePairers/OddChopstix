@@ -13,10 +13,10 @@ var db = require("../models");
 module.exports = function(app) {
 // gets all foods with same name
 	app.get('/api/food/:food_name', function(req, res) {
-
+		console.log(req);
 		db.Food.findAll({
 			where: {
-				req.params.food_name
+				food_name: req.params.food_name
 			}
 		}).then(function(dbPost) {
 			res.json(dbPost);
@@ -28,7 +28,7 @@ module.exports = function(app) {
 
 		db.Alcohol.findAll({
 			where: {
-				req.params.alcohol_name
+				alc_name: req.params.alcohol_name
 			}
 		}).then(function(dbPost) {
 			res.json(dbPost);
@@ -36,11 +36,13 @@ module.exports = function(app) {
 		})
 	})
 // gets all pairings with same name
+// add functions to request to change name to ids
 	app.get('/api/food/:pairing_name', function(req, res) {
 
 		db.Pairing.findAll({
 			where: {
-				req.params.pairing_name
+				alc_id: req.params.alch_id,
+				food_id: req.params.food_id
 			}
 		}).then(function(dbPost) {
 			res.json(dbPost);
