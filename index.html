@@ -2,45 +2,53 @@
 <html>
 <head>
 	<title>OddChopstix</title>
+	<!-- bootstrap -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+	<!-- jquery -->
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<!-- popper.js -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+	<!-- bootstrap js? -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+	<!-- js post new -->
+	<script type="text/javascript" src="./js/post.js"></script>
+	<!-- js get from server -->
+	<script type="text/javascript" src="./js/get.js"></script>
 
-<style type="text/css">
-/* equal card height */
-.row-equal > div[class*='col-'] {
-    display: flex;
-    flex: 1 0 auto;
-}
+	<style type="text/css">
+		/* equal card height */
+		.row-equal > div[class*='col-'] {
+		    display: flex;
+		    flex: 1 0 auto;
+		}
 
-.row-equal .card {
-   width: 100%;
-}
+		.row-equal .card {
+		   width: 100%;
+		}
 
-/* ensure equal card height inside carousel */
-.carousel-inner>.row-equal.active, 
-.carousel-inner>.row-equal.next, 
-.carousel-inner>.row-equal.prev {
-    display: flex;
-}
+		/* ensure equal card height inside carousel */
+		.carousel-inner>.row-equal.active, 
+		.carousel-inner>.row-equal.next, 
+		.carousel-inner>.row-equal.prev {
+		    display: flex;
+		}
 
-/* prevent flicker during transition */
-.carousel-inner>.row-equal.active.left, 
-.carousel-inner>.row-equal.active.right {
-    opacity: 0.5;
-    display: flex;
-}
+		/* prevent flicker during transition */
+		.carousel-inner>.row-equal.active.left, 
+		.carousel-inner>.row-equal.active.right {
+		    opacity: 0.5;
+		    display: flex;
+		}
 
 
-/* control image height */
-.card-img-top-250 {
-    max-height: 250px;
-    overflow:hidden;
-}
-</style>
-
+		/* control image height */
+		.card-img-top-250 {
+		    max-height: 250px;
+		    overflow:hidden;
+		}
+	</style>
 </head>
+
 <body>
 <div container="header">
 	<div class="jumbotron">
@@ -53,13 +61,13 @@
   <div class="form-group row">
     <label for="inputEmail3" class="col-sm-2 col-form-label">Food</label>
     <div class="col-sm-10">
-      <input type="email" class="form-control" id="food-input" placeholder="food">
+      <input class="form-control" id="food-input" placeholder="food" value="burger">
     </div>
   </div>
   <div class="form-group row">
     <label for="inputPassword3" class="col-sm-2 col-form-label">Alcohol</label>
     <div class="col-sm-10">
-      <input type="password" class="form-control" id="alc-input" placeholder="Alcohol">
+      <input class="form-control" id="alc-input" placeholder="Alcohol" value="bourbon">
     </div>
   </div>
   <fieldset class="form-group">
@@ -68,31 +76,31 @@
       <div class="col-sm-10">
         <div class="form-check">
           <label class="form-check-label">
-            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked> ★
+            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="1" checked> ★
     
           </label>
         </div>
         <div class="form-check">
           <label class="form-check-label">
-            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="2">
             ★★
           </label>
         </div>
         <div class="form-check">
           <label class="form-check-label">
-            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3">
+            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="3">
             ★★★
           </label>
         </div>
         <div class="form-check">
           <label class="form-check-label">
-            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3">
+            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="4">
             ★★★★
           </label>
         </div>
         <div class="form-check">
           <label class="form-check-label">
-            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3">
+            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="5">
             ★★★★★
           </label>
         </div>
@@ -102,13 +110,13 @@
    <div class="form-group row">
     <label for="review" class="col-sm-2 col-form-label">Review</label>
     <div class="col-sm-10">
-      <textarea type="password" class="form-control" id="review-input" placeholder="What did you think?"></textarea>
+      <textarea type="password" class="form-control" id="review-input" placeholder="What did you think?" text="Great!"></textarea>
   	</div>
   </div>
   
   <div class="form-group row">
     <div class="col-sm-10">
-      <button type="submit" id="rate-btn" class="btn btn-primary">Rate!</button>
+      <button id="rate-btn" class="btn btn-primary">Rate!</button>
     </div>
   </div>
 </form>
@@ -136,7 +144,7 @@
 	  </label>
 	</div>
 	    <input class="form-control mr-sm-2" type="search" id="search-input" placeholder="Search"  aria-label="Search">
-	    <button class="btn btn-outline-success my-2 my-sm-0" id="search-btn" type="submit">Search</button>
+	    <button class="btn btn-outline-success my-2 my-sm-0" id="search-btn">Search</button>
 	  </form>
 </nav>
 	<br>
@@ -308,7 +316,7 @@
 	    $('.next').click(function(){ $('.carousel').carousel('next');return false; });
 	    $('.prev').click(function(){ $('.carousel').carousel('prev');return false; });
 	    
-	})(jQuery);
+			})(jQuery);
 		</script>
 
 </body>
