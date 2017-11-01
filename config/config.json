@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "Sonom@14",
+    "password": "sqlpassword",
     "database": "OddChopStix_db",
     "host": "127.0.0.1",
     "dialect": "mysql"

@@ -3,7 +3,7 @@ $(document).ready(function() {
 	// search query submit button
 	$('#search-btn').on('click', function(event) {
 		event.preventDefault();
-
+		console.log('search-btn clicked func runs');
 		var searchQuery = $('#search-input').val().trim();
 		var radioButtons = document.querySelector('[name="inLineRadioOptions"]:checked').value();
 		// Depending on which radio button is clicked, will query all matching food/alch/pairing names
@@ -26,21 +26,21 @@ $(document).ready(function() {
 		console.log('getfoods func runs');
 		$.get('/api/food/' + query, function(data) {
 			console.log(data);
-		}
+		});
 	};
 	// grabs all matching alch from alcohol table
 	var getAlcohols = function(query) {
 		console.log('get alch func runs');
 		$.get('/api/alcohol/' + query, function(data) {
 			console.log(data);
-		}
+		});
 	};
 	// grabs all matching pairings from pairing table
 	var getPairings = function(query) {
 		console.log('get pairings func runs');
 		$.get('/api/pairing/' + query, function(data) {
 			console.log(data);
-		}
+		});
 	};
 // ///////////////////////////////////////////////////// //
 // ---------------------------------------------------- //
@@ -49,7 +49,7 @@ $(document).ready(function() {
 // Shows all foods in row on start 
 	var htmlFoodDiv = function() {
 		var foodDiv = document.getElementById('food-div')
-		$.get('/api/food', function(data) {
+		$.get('/api/foods', function(data) {
 			console.log(data);
 
 			foodDiv.innerHTML = data;
@@ -68,5 +68,5 @@ $(document).ready(function() {
 		});
 	}
 
-	htmlFoodDiv();
+	// htmlFoodDiv();
 });
