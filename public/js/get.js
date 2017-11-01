@@ -5,7 +5,10 @@ $(document).ready(function() {
 		event.preventDefault();
 		console.log('search-btn clicked func runs');
 		var searchQuery = $('#search-input').val().trim();
-		var radioButtons = document.querySelector('[name="inLineRadioOptions"]:checked').value();
+		console.log('searchQuery', searchQuery);
+
+		var radioButtons = document.querySelector('[name="inlineRadioOptions"]:checked').value;
+		console.log('radioButtons', radioButtons);		
 		// Depending on which radio button is clicked, will query all matching food/alch/pairing names
 		switch (radioButtons) {
 			case 'food':

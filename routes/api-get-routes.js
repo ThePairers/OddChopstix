@@ -11,6 +11,9 @@ var db = require("../models");
 // Routes
 // =============================================================
 module.exports = function(app) {
+
+// SEARCH WITH RADIO BUTTONS ROUTES ////////////////////////////
+// =============================================================
 // gets all foods with same name
 	app.get('/api/food/:food_name', function(req, res) {
 		console.log(req);
@@ -49,6 +52,9 @@ module.exports = function(app) {
 			console.log(dbPost);
 		});
 	});
+// ===========================================================
+// DISPLAYS ALL FOOD/ALCOHOL/PAIRINGS IN ROWS ////////////////
+// -----------------------------------------------------------
 
 	app.get("/api/food", function(req, res) {
 		db.Food.findAll({

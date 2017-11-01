@@ -51,7 +51,6 @@ module.exports = function(app) {
 // PAIRING TABLE /////////////////////////////////////////
 //------------------------------------------------------//
 	app.post('/api/pairing', function(req, res) {
-		console.log('POST pairing REQ: ', req);
 		db.Pairing.create(req.body).then(function(dbPost) {
 			res.json(dbPost);
 		})		
