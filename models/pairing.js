@@ -3,6 +3,7 @@ module.exports = function(sequelize, DataTypes) {
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      primaryKey: true,
       validate: {
         len: [1]
       }
