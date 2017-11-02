@@ -1,39 +1,13 @@
 $(document).ready(function() {
 
-// opens modals //////
-var newPairingModal = $('#new-pairing-modal');
-var openPostModalBtn = $('#post-modal-btn');
-var allModals = $('.modal');
-var closeModalBtn = $('.close-modal');
-
-// When the user clicks on the button, open the modal 
-$('#new-pairing-btn').on('click', function(event) {
-		event.preventDefault();
-    $('#new-pairing-modal').css('display', "block");
-});
-
-// When the user clicks on <span> (x), close the modal
-$('.close-modal').on('click', function(event) {
-		event.preventDefault();
-    $('#new-pairing-modal').css('display', "none");
-});
-
-$('#food-search').slick({
+var prevArrow = "<button type='button' class='slick-prev pull-left'><i class='fa fa-arrow-circle-left fa-3' aria-hidden='true'></i></button>"
+var nextArrow = "<button type='button' class='slick-next pull-right'><i class='fa fa-arrow-circle-right fa-3' aria-hidden='true'></i></button>"
+$('.multiple-items').slick({
   infinite: true,
   slidesToShow: 3,
-  slidesToScroll: 3
+  slidesToScroll: 3,
+  prevArrow: prevArrow,
+  nextArrow: nextArrow
 });
-
-$('#alcohol-search').slick({
-  infinite: true,
-  slidesToShow: 3,
-  slidesToScroll: 3
-});
-// When the user clicks anywhere outside of the modal, close it
-// window.on('click', function(event) {
-//     if (event.target == allModals) {
-//         allModals.style.display = "none";
-//     };
-// });
 
 });

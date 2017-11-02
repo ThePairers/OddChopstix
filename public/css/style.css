@@ -15,14 +15,20 @@
   margin-left: 0px;
 }
 
+.slick-slide {
+  position: relative;
+}
+
 .slick-slide img {
-  width: 94%;
+  width: 88%;
+  height:200px;
 }
 
 #food-search {
   width: 80%;
   margin-left: 10%;
   margin-right: 10%;
+
 }
 
 .alcohol-carousel {
@@ -33,12 +39,51 @@
   width: 80%;
   margin-left: 10%;
   margin-right: 10%;
+
 }
 
+.slick-slide h5 {
+  background: black;
+  color: white;
+  width: 88%;
+  height:20%;
+  position: absolute;
+  margin-bottom: 0px;
+  bottom: 0;
+  left: 0;
+  text-align: center
+}
 
+.slick-prev {
+  top: 50%;
+  left: -32px;
+}
+
+.slick-next {
+  bottom: 50%;
+  right: -4px;
+
+}
+.slick-arrow {
+  background-color: #fff;
+  background: transparent;
+  border: none;
+  position: absolute;
+  line-height: 0;
+  display: block;
+  height: 40px;
+  width: 40px;
+  padding: 0;
+  border: none;
+  outline: none;
+  top: 50%;
+  margin-top: -10px;
+
+
+}
 /* Arrows */
 
-.slick-prev,
+/*.slick-prev,
 .slick-next {
     position: absolute;
     display: block;
@@ -86,7 +131,7 @@
     &:before {
         content: '\2192';
     }
-}
+}*/
 /* ****************************************** */
 /* ALL MODALS STUFF */
 /* ========================================== */
