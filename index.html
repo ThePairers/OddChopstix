@@ -3,7 +3,9 @@
 <head>
 	<title>OddChopstix</title>
 	<!-- bootstrap -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<!-- custom stylesheet -->
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<!-- jquery -->
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<!-- popper.js -->
@@ -14,39 +16,8 @@
 	<script type="text/javascript" src="./js/post.js"></script>
 	<!-- js get from server -->
 	<script type="text/javascript" src="./js/get.js"></script>
-
-	<style type="text/css">
-		/* equal card height */
-		.row-equal > div[class*='col-'] {
-		    display: flex;
-		    flex: 1 0 auto;
-		}
-
-		.row-equal .card {
-		   width: 100%;
-		}
-
-		/* ensure equal card height inside carousel */
-		.carousel-inner>.row-equal.active, 
-		.carousel-inner>.row-equal.next, 
-		.carousel-inner>.row-equal.prev {
-		    display: flex;
-		}
-
-		/* prevent flicker during transition */
-		.carousel-inner>.row-equal.active.left, 
-		.carousel-inner>.row-equal.active.right {
-		    opacity: 0.5;
-		    display: flex;
-		}
-
-
-		/* control image height */
-		.card-img-top-250 {
-		    max-height: 250px;
-		    overflow:hidden;
-		}
-	</style>
+	<!-- js open/do stuff to modals -->
+	<script type="text/javascript" src="./js/modals.js"></script>
 </head>
 
 <body>
@@ -56,268 +27,131 @@
 		  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
 		  <hr class="my-4">
 		  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-		  <p class="lead">
-<form>
-  <div class="form-group row">
-    <label for="inputEmail3" class="col-sm-2 col-form-label">Food</label>
-    <div class="col-sm-10">
-      <input class="form-control" id="food-input" placeholder="food" value="burger">
-    </div>
-  </div>
-  <div class="form-group row">
-    <label for="inputPassword3" class="col-sm-2 col-form-label">Alcohol</label>
-    <div class="col-sm-10">
-      <input class="form-control" id="alc-input" placeholder="Alcohol" value="bourbon">
-    </div>
-  </div>
-  <fieldset class="form-group">
-    <div class="row">
-      <legend class="col-form-legend col-sm-2">Rating</legend>
-      <div class="col-sm-10">
-        <div class="form-check">
-          <label class="form-check-label">
-            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="1" checked> ★
-    
-          </label>
-        </div>
-        <div class="form-check">
-          <label class="form-check-label">
-            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="2">
-            ★★
-          </label>
-        </div>
-        <div class="form-check">
-          <label class="form-check-label">
-            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="3">
-            ★★★
-          </label>
-        </div>
-        <div class="form-check">
-          <label class="form-check-label">
-            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="4">
-            ★★★★
-          </label>
-        </div>
-        <div class="form-check">
-          <label class="form-check-label">
-            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="5">
-            ★★★★★
-          </label>
-        </div>
-      </div>
-    </div>
-  </fieldset>
-   <div class="form-group row">
-    <label for="review" class="col-sm-2 col-form-label">Review</label>
-    <div class="col-sm-10">
-      <textarea type="password" class="form-control" id="review-input" placeholder="What did you think?" text="Great!"></textarea>
-  	</div>
-  </div>
-  
-  <div class="form-group row">
-    <div class="col-sm-10">
-      <button id="rate-btn" class="btn btn-primary">Rate!</button>
-    </div>
-  </div>
-</form>
-
-		    <!-- <a class="btn btn-primary btn-lg" href="#" role="button">Rate a Pairing!</a> -->
-		  </p>
-	</div>	
+	</div>	  <!-- Jumbotron end div -->
 </div>
-	<nav class="navbar navbar-light bg-light justify-content-between">
-	  <a class="navbar-brand">Navbar</a>
-	  <form class="form-inline">
-	  	<div class="form-check form-check-inline">
-	  <label class="form-check-label">
-	    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="food"> Food
-	  </label>
-	</div>
-	<div class="form-check form-check-inline">
-	  <label class="form-check-label">
-	    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="alcohol"> Alcohol
-	  </label>
-	</div>
-	<div class="form-check form-check-inline">
-	  <label class="form-check-label">
-	    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="pairings"> Pairings
-	  </label>
-	</div>
+
+<!-- ======================================== -->
+<!-- **************************************** -->
+<!-- ======================================== -->
+<!-- POST INPUT FORM -->
+<div id="newPairingModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+				<form>
+				  <div class="form-group row">
+				    <label for="inputEmail3" class="col-sm-2 col-form-label">Food</label>
+				    <div class="col-sm-10">
+				      <input class="form-control" id="food-input" placeholder="food" value="burger">
+				    </div>
+				  </div>
+				  <div class="form-group row">
+				    <label for="inputPassword3" class="col-sm-2 col-form-label">Alcohol</label>
+				    <div class="col-sm-10">
+				      <input class="form-control" id="alc-input" placeholder="Alcohol" value="bourbon">
+				    </div>
+				  </div>
+				  <fieldset class="form-group">
+				    <div class="row">
+				      <legend class="col-form-legend col-sm-2">Rating</legend>
+				      <div class="col-sm-10">
+				        <div class="form-check">
+				          <label class="form-check-label">
+				            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="1" checked> ★
+				    
+				          </label>
+				        </div>
+				        <div class="form-check">
+				          <label class="form-check-label">
+				            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="2">
+				            ★★
+				          </label>
+				        </div>
+				        <div class="form-check">
+				          <label class="form-check-label">
+				            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="3">
+				            ★★★
+				          </label>
+				        </div>
+				        <div class="form-check">
+				          <label class="form-check-label">
+				            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="4">
+				            ★★★★
+				          </label>
+				        </div>
+				        <div class="form-check">
+				          <label class="form-check-label">
+				            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="5">
+				            ★★★★★
+				          </label>
+				        </div>
+				      </div>
+				    </div>
+				  </fieldset>
+				   <div class="form-group row">
+				    <label for="review" class="col-sm-2 col-form-label">Review</label>
+				    <div class="col-sm-10">
+				      <textarea type="password" class="form-control" id="review-input" placeholder="What did you think?" text="Great!"></textarea>
+				  	</div>
+				  </div>
+				  
+				  <div class="form-group row">
+				    <div class="col-sm-10">
+				      <button id="rate-btn" class="btn btn-primary">Rate!</button>
+				    </div>
+				  </div>
+				</form>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	      </div>
+	    </div>
+	  </div>
+		</div>
+</div> <!-- ENDS POST INPUT FORM MODAL -->
+<!-- ======================================== -->
+<!-- **************************************** -->
+<!-- NAV BAR SECTION ======================== -->
+<nav class="navbar navbar-light bg-light justify-content-between">
+  <a class="navbar-brand">Navbar</a>
+  <form class="form-inline">
+		<div class="form-check form-check-inline">
+  		<label class="form-check-label">
+				<!-- Trigger the modal with a button -->
+				<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#newPairingModal">
+					Open Modal
+				</button>
+  		</label>
+		</div>
+  	<div class="form-check form-check-inline">
+  		<label class="form-check-label">
+    		<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="food"> Food
+  		</label>
+		</div>
+		<div class="form-check form-check-inline">
+		  <label class="form-check-label">
+		    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="alcohol"> Alcohol
+		  </label>
+		</div>
+		<div class="form-check form-check-inline">
+		  <label class="form-check-label">
+		    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="pairings"> Pairings
+		  </label>
+		</div>
 	    <input class="form-control mr-sm-2" type="search" id="search-input" placeholder="Search"  aria-label="Search">
 	    <button class="btn btn-outline-success my-2 my-sm-0" id="search-btn">Search</button>
 	  </form>
-</nav>
+</nav> <!-- END NAV BAR -->
+
+<!-- ================================================ -->
+<!-- ************************************************ -->
+<!-- ================================================ -->
 	<br>
 	  <br>
- 
-		<div class="card-deck">
-		  <div class="card">
-		    <img class="card-img-top" src="..." alt="Card image cap">
-		    <div class="card-body">
-		      <h4 class="card-title">Card title</h4>
-		      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-		    </div>
-		    <div class="card-footer">
-		      <small class="text-muted">Last updated 3 mins ago</small>
-		    </div>
-		  </div>
-		  <div class="card">
-		    <img class="card-img-top" src="..." alt="Card image cap">
-		    <div class="card-body">
-		      <h4 class="card-title">Card title</h4>
-		      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-		    </div>
-		    <div class="card-footer">
-		      <small class="text-muted">Last updated 3 mins ago</small>
-		    </div>
-		  </div>
-		  <div class="card">
-		    <img class="card-img-top" src="..." alt="Card image cap">
-		    <div class="card-body">
-		      <h4 class="card-title">Card title</h4>
-		      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-		    </div>
-		    <div class="card-footer">
-		      <small class="text-muted">Last updated 3 mins ago</small>
-		    </div>
-		  </div>
-		  <div class="card">
-		    <img class="card-img-top" src="..." alt="Card image cap">
-		    <div class="card-body">
-		      <h4 class="card-title">Card title</h4>
-		      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-		    </div>
-		    <div class="card-footer">
-		      <small class="text-muted">Last updated 3 mins ago</small>
-		    </div>
-		  </div>
-		   <div class="card">
-		    <img class="card-img-top" src="..." alt="Card image cap">
-		    <div class="card-body">
-		      <h4 class="card-title">Card title</h4>
-		      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-		    </div>
-		    <div class="card-footer">
-		      <small class="text-muted">Last updated 3 mins ago</small>
-		    </div>
-		  </div>
-		</div>
-	<br>
-		<div class="card-deck">
-		  <div class="card">
-		    <img class="card-img-top" src="..." alt="Card image cap">
-		    <div class="card-body">
-		      <h4 class="card-title">Card title</h4>
-		      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-		    </div>
-		    <div class="card-footer">
-		      <small class="text-muted">Last updated 3 mins ago</small>
-		    </div>
-		  </div>
-		  <div class="card">
-		    <img class="card-img-top" src="..." alt="Card image cap">
-		    <div class="card-body">
-		      <h4 class="card-title">Card title</h4>
-		      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-		    </div>
-		    <div class="card-footer">
-		      <small class="text-muted">Last updated 3 mins ago</small>
-		    </div>
-		  </div>
-		  <div class="card">
-		    <img class="card-img-top" src="..." alt="Card image cap">
-		    <div class="card-body">
-		      <h4 class="card-title">Card title</h4>
-		      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-		    </div>
-		    <div class="card-footer">
-		      <small class="text-muted">Last updated 3 mins ago</small>
-		    </div>
-		  </div>
-		  <div class="card">
-		    <img class="card-img-top" src="..." alt="Card image cap">
-		    <div class="card-body">
-		      <h4 class="card-title">Card title</h4>
-		      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-		    </div>
-		    <div class="card-footer">
-		      <small class="text-muted">Last updated 3 mins ago</small>
-		    </div>
-		  </div>
-		   <div class="card">
-		    <img class="card-img-top" src="..." alt="Card image cap">
-		    <div class="card-body">
-		      <h4 class="card-title">Card title</h4>
-		      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-		    </div>
-		    <div class="card-footer">
-		      <small class="text-muted">Last updated 3 mins ago</small>
-		    </div>
-		  </div>
-		</div>
-		<br>
-		<div class="card-deck">
-		  <div class="card">
-		    <img class="card-img-top" src="..." alt="Card image cap">
-		    <div class="card-body">
-		      <h4 class="card-title">Card title</h4>
-		      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-		    </div>
-		    <div class="card-footer">
-		      <small class="text-muted">Last updated 3 mins ago</small>
-		    </div>
-		  </div>
-		  <div class="card">
-		    <img class="card-img-top" src="..." alt="Card image cap">
-		    <div class="card-body">
-		      <h4 class="card-title">Card title</h4>
-		      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-		    </div>
-		    <div class="card-footer">
-		      <small class="text-muted">Last updated 3 mins ago</small>
-		    </div>
-		  </div>
-		  <div class="card">
-		    <img class="card-img-top" src="..." alt="Card image cap">
-		    <div class="card-body">
-		      <h4 class="card-title">Card title</h4>
-		      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-		    </div>
-		    <div class="card-footer">
-		      <small class="text-muted">Last updated 3 mins ago</small>
-		    </div>
-		  </div>
-		  <div class="card">
-		    <img class="card-img-top" src="..." alt="Card image cap">
-		    <div class="card-body">
-		      <h4 class="card-title">Card title</h4>
-		      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-		    </div>
-		    <div class="card-footer">
-		      <small class="text-muted">Last updated 3 mins ago</small>
-		    </div>
-		  </div>
-		   <div class="card">
-		    <img class="card-img-top" src="..." alt="Card image cap">
-		    <div class="card-body">
-		      <h4 class="card-title">Card title</h4>
-		      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-		    </div>
-		    <div class="card-footer">
-		      <small class="text-muted">Last updated 3 mins ago</small>
-		    </div>
-		  </div>
-		</div>
-		<script type="text/javascript">
-			(function($) {
-	    "use strict";
-
-	    // manual carousel controls
-	    $('.next').click(function(){ $('.carousel').carousel('next');return false; });
-	    $('.prev').click(function(){ $('.carousel').carousel('prev');return false; });
-	    
-			})(jQuery);
-		</script>
 
 </body>
 </html>

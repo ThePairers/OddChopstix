@@ -79,7 +79,7 @@ $(document).ready(function() {
 		var foodDiv = document.getElementById('food-div')
 		$.get('/api/foods', function(data) {
 			console.log(data);
-
+			
 			foodDiv.innerHTML = data;
 		});
 	}
