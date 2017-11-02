@@ -5,6 +5,7 @@ $(document).ready(function() {
 		event.preventDefault();
 		console.log('search-btn clicked func runs');
 		var searchQuery = $('#search-input').val().trim();
+		//var radioButtons = $('input[name="inlineRadioOptions"]:checked').val();
 		console.log('searchQuery', searchQuery);
 
 		var radioButtons = document.querySelector('[name="inlineRadioOptions"]:checked').value;
@@ -43,7 +44,7 @@ $(document).ready(function() {
 	var getAlcohols = function(query) {
 		console.log('get alch func runs');
 		$.get('/api/alcohol/' + query, function(data) {
-			console.log(DATA);
+			console.log(data);
 			console.log(typeof data);
 	// if statement when no results found 
 			if (data.length == 0) {
@@ -52,7 +53,6 @@ $(document).ready(function() {
 	// SENDS ALCOHOL DATA TO HTML
 				console.log('results found')
 			}
-
 		});
 	};
 	// grabs all matching pairings from pairing table
@@ -95,6 +95,4 @@ $(document).ready(function() {
 	}
 
 	// htmlFoodDiv();
-
-
 });
