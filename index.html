@@ -37,14 +37,15 @@
 <nav class="navbar navbar-light bg-light justify-content-between">
   <a class="navbar-brand">OddChopstix</a>
   <form class="form-inline">
-		<div class="form-check form-check-inline">
+		<div class="form-check form-check-inlineco">
   		<label class="form-check-label">
 				<!-- Trigger the modal with a button -->
-				<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#newPairingModal">
+				<button type="button" class="btn btn-outline-success my-2 my-sm-0 newPairBtn" data-toggle="modal" data-target="#newPairingModal">
 					New Pairing
 				</button>
   		</label>
 		</div>
+	  <input class="form-control mr-sm-2" type="search" id="search-input" placeholder="Search"  aria-label="Search">
   	<div class="form-check form-check-inline">
   		<label class="form-check-label">
     		<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="food"> Food
@@ -60,7 +61,6 @@
 		    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="pairings"> Pairings
 		  </label>
 		</div>
-	    <input class="form-control mr-sm-2" type="search" id="search-input" placeholder="Search"  aria-label="Search">
 	    <button class="btn btn-outline-success my-2 my-sm-0" id="search-btn">Search</button>
 	  </form>
 </nav> <!-- END NAV BAR -->
@@ -81,7 +81,7 @@
 	  <br>
 
 <!-- Food Carousel that displays the data from the food table -->
-<div id='food-carousel'>
+<div id='food-carousel' class="carousel">
 	<h4>
 		Chow
 	</h4>
@@ -116,7 +116,7 @@
 </div>
 
 <!-- Alcohol Carousel that displays the data from the alcohol table -->
-<div id="alcohol-carousel">
+<div id="alcohol-carousel" class="carousel">
 	<h4>
 		Booze
 	</h4>

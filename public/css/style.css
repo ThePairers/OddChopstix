@@ -1,9 +1,36 @@
+/*TABLE OF CONTENTS
+1. NAVBAR
+2. JUMBOTRON
+3. MODALS
+4. SLICK CAROUSELS
+  4a. CAROUSEL IMG & CAPTION
+  4b. SLICK ARROWS
+5.
+6. Multiple Elements
 
+/* Header Designations */
+/*  
+    h1 = Jumbotron title
+    h4 = Carousel titles
+    h5 = Carousel image captions
+
+/* ****************************************** */
+/* 1. NAVBAR */
+/* ========================================== */
+.newPairBtn {
+  margin-right: 0.5rem;
+}
+
+/* ****************************************** */
+/* 2. JUMBOTRON */
+/* ========================================== */
 .jumbotron {
 	margin-bottom: 0px;
 
 }
-
+/* ****************************************** */
+/* 3. MODALS */
+/* ========================================== */
 .modal-header {
   background-color: rgb(139, 190, 224);
 }
@@ -15,35 +42,49 @@
   margin-left: 0px;
 }
 
-.slick-slide {
-  position: relative;
+/* ****************************************** */
+/* 4. SLICK CAROUSEL STUFF */
+/* ========================================== */
+
+.carousel h4 {
+  margin-left: .5rem;
 }
 
-.slick-slide img {
-  width: 88%;
-  height:200px;
+#alcohol-carousel {
+  margin-top: 10%;
 }
 
 #food-search {
   width: 80%;
   margin-left: 10%;
   margin-right: 10%;
-
-}
-
-.alcohol-carousel {
-  margin-top: 2%;
 }
 
 #alcohol-search {
   width: 80%;
   margin-left: 10%;
   margin-right: 10%;
-
 }
 
+.slick-slide {
+  position: relative;
+}
+
+
+
+/* ****************************************** */
+/* 4a. CAROUSEL IMG & CAPTION */
+/* ========================================== */
+
+.slick-slide img {
+  width: 88%;
+  height:200px;
+  box-shadow: none;
+}
+
+/*image caption*/
 .slick-slide h5 {
-  background: black;
+  display: none;
   color: white;
   width: 88%;
   height:20%;
@@ -52,18 +93,17 @@
   bottom: 0;
   left: 0;
   text-align: center
+  background: #000;
+  background: linear-gradient(to top, #000 40%, rgba(0, 0, 0, 0) 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
 }
 
-.slick-prev {
-  top: 50%;
-  left: -32px;
+.slick-slide:hover h5 {
+  display: block;
 }
 
-.slick-next {
-  bottom: 50%;
-  right: -4px;
-
-}
+/* ****************************************** */
+/* 4b. SLICK ARROWS */
+/* ========================================== */
 .slick-arrow {
   background-color: #fff;
   background: transparent;
@@ -78,64 +118,28 @@
   outline: none;
   top: 50%;
   margin-top: -10px;
-
-
-}
-/* Arrows */
-
-/*.slick-prev,
-.slick-next {
-    position: absolute;
-    display: block;
-    height: 40px;
-    width: 40px;
-    line-height: 0;
-    font-size: 0;
-    cursor: pointer;
-    background: transparent;
-    color: transparent;
-    top: 50%;
-    margin-top: -10px;
-    padding: 0;
-    border: none;
-    outline: none;
 }
 
-.slick-prev:before, .slick-next:before {
-    font-family: "slick";
-    font-size: 30px;
-    line-height: 1;
-    color: purple;
-    opacity: 0.85;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-.slick-next:before {
-    content: '→';
-}
-
-.slick-prev:before {
-    content: '←';
+.slick-arrow:active, .slick-arrow:focus {
+  outline: 0;
+  border: none;
 }
 
 .slick-prev {
-    left: -48px;
-    &:before {
-        content: '\2190';
-    }
+  top: 50%;
+  left: -42px;
 }
 
 .slick-next {
-    right: -37px;
-    &:before {
-        content: '\2192';
-    }
-}*/
-/* ****************************************** */
-/* ALL MODALS STUFF */
-/* ========================================== */
+  bottom: 50%;
+  right: -15px;
+}
 
 /* ****************************************** */
-/* POST MODAL STUFF */
+/* 6. Multiple Elements */
 /* ========================================== */
+
+/*Hover Pointer for buttons*/
+.slick-arrow:hover {
+  cursor: pointer;
+}
