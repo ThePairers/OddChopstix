@@ -3,15 +3,24 @@
 <head>
 	<title>OddChopstix</title>
 	<!-- bootstrap -->
-	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+	<!-- slick for carousels -->
+	<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.css"/>
+<!-- 	<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick-theme.css"/> -->
+
 	<!-- custom stylesheet -->
 	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<!-- jquery -->
-	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+
 	<!-- popper.js -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+	<!-- jquery -->
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>	
 	<!-- bootstrap js? -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+	<!-- slick js -->
+
+
 	<!-- js post new -->
 	<script type="text/javascript" src="./js/post.js"></script>
 	<!-- js get from server -->
@@ -32,98 +41,15 @@
 
 <!-- ======================================== -->
 <!-- **************************************** -->
-<!-- ======================================== -->
-<!-- POST INPUT FORM -->
-<div id="newPairingModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modal Header</h4>
-      </div>
-      <div class="modal-body">
-				<form>
-				  <div class="form-group row">
-				    <label for="inputEmail3" class="col-sm-2 col-form-label">Food</label>
-				    <div class="col-sm-10">
-				      <input class="form-control" id="food-input" placeholder="food" value="burger">
-				    </div>
-				  </div>
-				  <div class="form-group row">
-				    <label for="inputPassword3" class="col-sm-2 col-form-label">Alcohol</label>
-				    <div class="col-sm-10">
-				      <input class="form-control" id="alc-input" placeholder="Alcohol" value="bourbon">
-				    </div>
-				  </div>
-				  <fieldset class="form-group">
-				    <div class="row">
-				      <legend class="col-form-legend col-sm-2">Rating</legend>
-				      <div class="col-sm-10">
-				        <div class="form-check">
-				          <label class="form-check-label">
-				            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="1" checked> ★
-				    
-				          </label>
-				        </div>
-				        <div class="form-check">
-				          <label class="form-check-label">
-				            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="2">
-				            ★★
-				          </label>
-				        </div>
-				        <div class="form-check">
-				          <label class="form-check-label">
-				            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="3">
-				            ★★★
-				          </label>
-				        </div>
-				        <div class="form-check">
-				          <label class="form-check-label">
-				            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="4">
-				            ★★★★
-				          </label>
-				        </div>
-				        <div class="form-check">
-				          <label class="form-check-label">
-				            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="5">
-				            ★★★★★
-				          </label>
-				        </div>
-				      </div>
-				    </div>
-				  </fieldset>
-				   <div class="form-group row">
-				    <label for="review" class="col-sm-2 col-form-label">Review</label>
-				    <div class="col-sm-10">
-				      <textarea type="password" class="form-control" id="review-input" placeholder="What did you think?" text="Great!"></textarea>
-				  	</div>
-				  </div>
-				  
-				  <div class="form-group row">
-				    <div class="col-sm-10">
-				      <button id="rate-btn" class="btn btn-primary">Rate!</button>
-				    </div>
-				  </div>
-				</form>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	      </div>
-	    </div>
-	  </div>
-		</div>
-</div> <!-- ENDS POST INPUT FORM MODAL -->
-<!-- ======================================== -->
-<!-- **************************************** -->
 <!-- NAV BAR SECTION ======================== -->
 <nav class="navbar navbar-light bg-light justify-content-between">
-  <a class="navbar-brand">Navbar</a>
+  <a class="navbar-brand"></a>
   <form class="form-inline">
 		<div class="form-check form-check-inline">
   		<label class="form-check-label">
 				<!-- Trigger the modal with a button -->
-				<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#newPairingModal">
-					Open Modal
+				<button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#newPairingModal">
+					New Pairing
 				</button>
   		</label>
 		</div>
@@ -152,6 +78,141 @@
 <!-- ================================================ -->
 	<br>
 	  <br>
+
+<!-- Food Carousel that displays the data from the food table -->
+<div id='food-carousel'>
+	<h4>
+		Chow
+	</h4>
+	<div id="food-search">
+		<div class="image slick-slide slick-active">
+			<img src="images/ham.jpg">
+		</div>
+		<div class="image slick-slide slick-active">
+			<img src="images/ham.jpg">
+		</div>
+
+		<div class="image slick-slide slick-active">
+			<img src="images/ham.jpg">
+		</div>
+
+		<div class="image slick-slide slick-active">
+			<img src="images/ham.jpg">
+		</div>
+
+	</div>
+</div>
+
+<!-- Alcohol Carousel that displays the data from the alcohol table -->
+<div id="alcohol-carousel">
+	<h4>
+		Booze
+	</h4>
+	<div id="alcohol-search">
+		<div class="image slick-slide slick-active">
+			<img src="images/jameson.jpg">
+		</div>
+		<div class="image slick-slide slick-active">
+			<img src="images/jameson.jpg">
+		</div>
+
+		<div class="image slick-slide slick-active">
+			<img src="images/jameson.jpg">
+		</div>
+
+		<div class="image slick-slide slick-active">
+			<img src="images/jameson.jpg">
+		</div>
+
+	</div>
+</div>
+
+
+
+<!-- ======================================== -->
+<!-- **************************************** -->
+<!-- ======================================== -->
+<!-- POST INPUT MODAL -->
+	<div id="newPairingModal" class="modal fade" role="dialog">
+	  <div class="modal-dialog">
+	    <!-- Modal content-->
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h4 class="modal-title">Modal Header</h4>
+	        <button type="button" class="close" data-dismiss="modal">&times;</button>
+	      </div>
+	      <div class="modal-body">
+					<form>
+					  <div class="form-group row">
+					    <label for="inputEmail3" class="col-sm-2 col-form-label">Food</label>
+					    <div class="col-sm-10">
+					      <input class="form-control" id="food-input" placeholder="food" value="burger">
+					    </div>
+					  </div>
+					  <div class="form-group row">
+					    <label for="inputPassword3" class="col-sm-2 col-form-label">Alcohol</label>
+					    <div class="col-sm-10">
+					      <input class="form-control" id="alc-input" placeholder="Alcohol" value="bourbon">
+					    </div>
+					  </div>
+					  <fieldset class="form-group">
+					    <div class="row">
+					      <legend class="col-form-legend col-sm-2">Rating</legend>
+					      <div class="col-sm-10">
+					        <div class="form-check">
+					          <label class="form-check-label">
+					            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="1" checked> ★
+					    
+					          </label>
+					        </div>
+					        <div class="form-check">
+					          <label class="form-check-label">
+					            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="2">
+					            ★★
+					          </label>
+					        </div>
+					        <div class="form-check">
+					          <label class="form-check-label">
+					            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="3">
+					            ★★★
+					          </label>
+					        </div>
+					        <div class="form-check">
+					          <label class="form-check-label">
+					            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="4">
+					            ★★★★
+					          </label>
+					        </div>
+					        <div class="form-check">
+					          <label class="form-check-label">
+					            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="5">
+					            ★★★★★
+					          </label>
+					        </div>
+					      </div>
+					    </div>
+					  </fieldset>
+					   <div class="form-group row">
+					    <label for="review" class="col-sm-2 col-form-label">Review</label>
+					    <div class="col-sm-10">
+					      <textarea type="password" class="form-control" id="review-input" placeholder="What did you think?" text="Great!"></textarea>
+					  	</div>
+					  </div>
+					  
+					  <div class="form-group row">
+					    <div class="col-sm-10">
+					      <button id="rate-btn" class="btn btn-primary">Rate!</button>
+					    </div>
+					  </div>
+					</form>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		      </div>
+		    </div>
+		  </div>
+			</div>
+	</div> <!-- ENDS POST INPUT FORM MODAL -->
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.min.js"></script>
 
 </body>
 </html>

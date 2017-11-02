@@ -18,6 +18,17 @@ $('.close-modal').on('click', function(event) {
     $('#new-pairing-modal').css('display', "none");
 });
 
+$('#food-search').slick({
+  infinite: true,
+  slidesToShow: 3,
+  slidesToScroll: 3
+});
+
+$('#alcohol-search').slick({
+  infinite: true,
+  slidesToShow: 3,
+  slidesToScroll: 3
+});
 // When the user clicks anywhere outside of the modal, close it
 // window.on('click', function(event) {
 //     if (event.target == allModals) {

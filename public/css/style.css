@@ -1,8 +1,92 @@
 
 .jumbotron {
 	margin-bottom: 0px;
-};
 
+}
+
+.modal-header {
+  background-color: rgb(139, 190, 224);
+}
+
+.modal-body {
+  background-color: rgb(139, 190, 224);
+}
+.close {
+  margin-left: 0px;
+}
+
+.slick-slide img {
+  width: 94%;
+}
+
+#food-search {
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.alcohol-carousel {
+  margin-top: 2%;
+}
+
+#alcohol-search {
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+
+/* Arrows */
+
+.slick-prev,
+.slick-next {
+    position: absolute;
+    display: block;
+    height: 40px;
+    width: 40px;
+    line-height: 0;
+    font-size: 0;
+    cursor: pointer;
+    background: transparent;
+    color: transparent;
+    top: 50%;
+    margin-top: -10px;
+    padding: 0;
+    border: none;
+    outline: none;
+}
+
+.slick-prev:before, .slick-next:before {
+    font-family: "slick";
+    font-size: 30px;
+    line-height: 1;
+    color: purple;
+    opacity: 0.85;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.slick-next:before {
+    content: '→';
+}
+
+.slick-prev:before {
+    content: '←';
+}
+
+.slick-prev {
+    left: -48px;
+    &:before {
+        content: '\2190';
+    }
+}
+
+.slick-next {
+    right: -37px;
+    &:before {
+        content: '\2192';
+    }
+}
 /* ****************************************** */
 /* ALL MODALS STUFF */
 /* ========================================== */
