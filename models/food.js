@@ -21,7 +21,17 @@ module.exports = function(sequelize, DataTypes) {
     },
     food_description: {
       type: DataTypes.STRING
-    }
+    },
+    createdAt: {
+      allowNull: false,
+      type: DataTypes.DATE,
+      defaultValue: sequelize.literal('CURRENT_TIMESTAMP')
+    },
+    updatedAt: {
+    allowNull: false,
+    type: DataTypes.DATE,
+    defaultValue: sequelize.literal('CURRENT_TIMESTAMP')
+  }
   });
   return Food;
 };

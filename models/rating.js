@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-  var Pairing = sequelize.define("Pairing", {
+  var Rating = sequelize.define("Rating", {
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -9,20 +9,22 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     },
-    alc_id: {
+    pair_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       validate: {
         len: [1]
       }
     },
-    food_id: {
+    rating: {
       type: DataTypes.INTEGER,
-      allowNull: false,
-      validate: {
-        len: [1]
-      }
+    },
+    review: {
+      type: DataTypes.STRING,
+    },
+    review_date: {
+      type: DataTypes.DATE
     }
   });
-  return Pairing;
+  return Rating;
 };
