@@ -5,7 +5,10 @@ $(document).ready(function() {
 		event.preventDefault();
 		console.log('search-btn clicked func runs');
 		var searchQuery = $('#search-input').val().trim();
-		var radioButtons = document.querySelector('[name="inLineRadioOptions"]:checked').value();
+		console.log('searchQuery', searchQuery);
+
+		var radioButtons = document.querySelector('[name="inlineRadioOptions"]:checked').value;
+		console.log('radioButtons', radioButtons);		
 		// Depending on which radio button is clicked, will query all matching food/alch/pairing names
 		switch (radioButtons) {
 			case 'food':
@@ -26,13 +29,30 @@ $(document).ready(function() {
 		console.log('getfoods func runs');
 		$.get('/api/food/' + query, function(data) {
 			console.log(data);
+			console.log(typeof data);
+	// if statement when no results found 
+			if (data.length == 0) {
+				console.log('no results found');
+			} else {
+	// SENDS FOOD DATA TO HTML
+				console.log('results found')
+			}
 		});
 	};
 	// grabs all matching alch from alcohol table
 	var getAlcohols = function(query) {
 		console.log('get alch func runs');
 		$.get('/api/alcohol/' + query, function(data) {
-			console.log(data);
+			console.log(DATA);
+			console.log(typeof data);
+	// if statement when no results found 
+			if (data.length == 0) {
+				console.log('no results found');
+			} else {
+	// SENDS ALCOHOL DATA TO HTML
+				console.log('results found')
+			}
+
 		});
 	};
 	// grabs all matching pairings from pairing table
@@ -40,10 +60,18 @@ $(document).ready(function() {
 		console.log('get pairings func runs');
 		$.get('/api/pairing/' + query, function(data) {
 			console.log(data);
+			console.log(typeof data);
+	// if statement when no results found 
+			if (data.length == 0) {
+				console.log('no results found');
+			} else {
+	// SENDS PAIRINGS DATA TO HTML
+				console.log('results found')
+			}
 		});
 	};
 // ///////////////////////////////////////////////////// //
-// ---------------------------------------------------- //
+// DISPLAYS FOOD/ALCH IN ROWS--------------------------- //
 // ///////////////////////////////////////////////////// //
 
 // Shows all foods in row on start 
@@ -54,8 +82,6 @@ $(document).ready(function() {
 
 			foodDiv.innerHTML = data;
 		});
-
-
 	}
 
 	var htmlAlchDiv = function() {
@@ -69,4 +95,6 @@ $(document).ready(function() {
 	}
 
 	// htmlFoodDiv();
+
+
 });
