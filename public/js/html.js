@@ -11,6 +11,7 @@ $('.multiple-items').slick({
   nextArrow: nextArrow
 });
 
+
 // post modal
 // logic: searches in food, if postfood runs then changes modal to have input which(function) sends back to post modal
 
