@@ -1,102 +1,125 @@
 $(document).ready(function() {
 	var newRating;
 	var newReview;
+	var foodID;
+	var foodName;
+	var foodDesc;
+	var alcID;
+	var alcName;
+	var alcDesc;
+	var pairID; //create logic to generate pair name from food + alc
 
 	// when submit button is clicked at input
 	$('#rate-btn').on('click', function(event) {
 		event.preventDefault();
-		console.log('rate-btn clicked')
-		var alch = $('#alc-input').val().trim();
-		var food = $('#food-input').val().trim();
-		var newRating = document.querySelector('[name="gridRadios"]:checked').value;
-		var newReview = $('#review-input').val().trim();
-		console.log(newRating);
-		console.log(newReview);
-		getFoodId(food, alch, newRating, newReview, getAlchId);
-
+		foodName = $('#food-input').val().trim();
+		foodDesc = $('#food-desc-input').val().trim();
+		alcName = $('#alc-input').val().trim();
+		alcDesc = $('#alc-desc-input').val().trim();
+		rating = document.querySelector('[name="gridRadios"]:checked').value;
+		newReview = $('#review-input').val().trim();
+		checkFood(checkAlc);	
 	});
 
-	// Queries Food table and pulls food id
-	var getFoodId = function(food, alch, rating, review, callback) {
-		var foodQuery = "/?food_name=" + food;
-		console.log('get food id func runs, post.js')
+	function checkFood(callback) {
+		var foodQuery = "/?food_name=" + foodName;
 		$.get('/api/food' + foodQuery, function(data) {
-			console.log('/ FOOD DATA /', data);
 			
 			// if the food is not found in the table it is created
 			// with postNewFood function
-			if (data == null) {
-				console.log('data is null');
-				postNewFood(food, alch, rating, review, getAlchId);
+			if (!data) {
+				postNewFood(checkAlc);
 			} else {
-			var foundFoodId = data.id;
+			foodID = data.id;
 			// callback goes to getAlchId function with food id
-			callback(foundFoodId, alch, rating, review, postNewPairing);
+			callback(checkAlc);
 			};
 		});
 	}
 
-	var postNewFood = function(food, alch, rating, review, callback) {
+	function postNewFood(callback) {
 		var newFood = {
-			food_name: food,
+			food_name: foodName,
 			food_photo: 'none',
-			food_description: 'this describes this.'
+			food_description: foodDesc
 		}
 		$.post('/api/food', newFood, function(data) {
 			console.log('post new food, return data: ', data);
 			console.log(data.id);
-			var foodId = data.id;
+			foodID = data.id;
 
-			callback(foodId, alch, rating, review, postNewPairing);
-		})
+			callback(checkAlc);
+		});
 	}
 
-	// Queries Alcohol Table and pulls alch id
-	var getAlchId = function(foodId, alch, rating, review, callback) {
-		console.log('get alch id func runs, post.js')
-
-		var alchQuery = "/?alc_name=" + alch;
+	function checkAlc(callback) {
+		var alchQuery = "/?alc_name=" + alcName;
 		$.get('/api/alcohol' + alchQuery, function(data) {
-			console.log('/ ALCH DATA /', data);
-
 			
-			// if alcohol is not found in table then it is created
-			// with postNewAlcohol function
-			if (data == null) {
-				postNewAlcohol(foodId, alch, rating, review, postNewPairing);
-
+			// if the food is not found in the table it is created
+			// with postNewFood function
+			if (!data) {
+				postNewAlc(checkAlc);
 			} else {
-			var foundAlchId = data.id;
-			// callback goes to postNewPairing function with food and alch id
-			callback(foodId, foundAlchId, rating, review);
+			alcID = data.id;
+			// callback goes to getAlchId function with food id
+			callback(checkPairing);
 			};
-		})
+		});
 	}
 
-	var postNewAlcohol = function(foodId, alch, rating, review, callback) {
+	function postNewAlc(callback) {
 		var newAlcohol = {
-			alc_name: alch,
+			alc_name: alcName,
 			alc_photo: 'none',
-			alc_description: 'this describes this.'
+			alc_description: alcDesc
 		}
 		$.post('/api/alcohol', newAlcohol, function(data) {
 			console.log('post new alcohol, return data: ', data);
 			console.log(data.id);
-			var alcoholId = data.id;
+			alcID = data.id;
 
-			callback(foodId, alcoholId, rating, review);
-		})
+			callback(checkPairing);
+		});
 	}
 
-// posts the new pairing with the food and alch ids
-	var postNewPairing = function(foodId, alchId, rating, review) {
+	function checkPairing(callback) {
+		var foodQuery = "/?food_id=" + foodID;
+		var alcQuery = "&alc_id=" + alcID;
+		$.get('/api/pairing' + foodQuery + alcQuery, function(data) {
+			console.log("data: ", data);
+			// if the food is not found in the table it is created
+			// with postNewFood function
+			if (!data) {
+				postNewPairing(postNewRating);
+			} else {
+			pairID = data.id;
+			// callback goes to getAlchId function with food id
+			callback(postNewRating);
+			};
+		});
+	}
+
+	function postNewPairing(callback) {
 		var newPairing = {
-			alc_id: alchId,
-			food_id: foodId,
-			rating: rating,
-			review: review
+			alc_id: alcID,
+			food_id: foodID,
 		};
-		$.post('/api/pairing', newPairing);
+		$.post('/api/pairing', newPairing, function(data) {
+			pairID = data.id;
+			callback(postNewRating);
+		});
 	};
+
+	function postNewRating() {
+		var newRating = {
+			pair_id: pairID,
+			rating: rating,
+			review: newReview
+		};
+		$.post('/api/rating', newRating, function(data) {
+			console.log(data);
+		});
+	}
 
 });
