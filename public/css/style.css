@@ -1,0 +1,145 @@
+/*TABLE OF CONTENTS
+1. NAVBAR
+2. JUMBOTRON
+3. MODALS
+4. SLICK CAROUSELS
+  4a. CAROUSEL IMG & CAPTION
+  4b. SLICK ARROWS
+5.
+6. Multiple Elements
+
+/* Header Designations */
+/*  
+    h1 = Jumbotron title
+    h4 = Carousel titles
+    h5 = Carousel image captions
+
+/* ****************************************** */
+/* 1. NAVBAR */
+/* ========================================== */
+.newPairBtn {
+  margin-right: 0.5rem;
+}
+
+/* ****************************************** */
+/* 2. JUMBOTRON */
+/* ========================================== */
+.jumbotron {
+	margin-bottom: 0px;
+
+}
+/* ****************************************** */
+/* 3. MODALS */
+/* ========================================== */
+.modal-header {
+  background-color: rgb(139, 190, 224);
+}
+
+.modal-body {
+  background-color: rgb(139, 190, 224);
+}
+.close {
+  margin-left: 0px;
+}
+
+/* ****************************************** */
+/* 4. SLICK CAROUSEL STUFF */
+/* ========================================== */
+
+.carousel h4 {
+  margin-left: .5rem;
+}
+
+#alcohol-carousel {
+  margin-top: 10%;
+}
+
+#food-search {
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+#alcohol-search {
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.slick-slide {
+  position: relative;
+}
+
+
+
+/* ****************************************** */
+/* 4a. CAROUSEL IMG & CAPTION */
+/* ========================================== */
+
+.slick-slide img {
+  width: 88%;
+  height:200px;
+  box-shadow: none;
+}
+
+/*image caption*/
+.slick-slide h5 {
+  display: none;
+  color: white;
+  width: 88%;
+  height:20%;
+  position: absolute;
+  margin-bottom: 0px;
+  bottom: 0;
+  left: 0;
+  text-align: center
+  background: #000;
+  background: linear-gradient(to top, #000 40%, rgba(0, 0, 0, 0) 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+
+.slick-slide:hover h5 {
+  display: block;
+}
+
+/* ****************************************** */
+/* 4b. SLICK ARROWS */
+/* ========================================== */
+.slick-arrow {
+  background-color: #fff;
+  background: transparent;
+  border: none;
+  position: absolute;
+  line-height: 0;
+  display: block;
+  height: 40px;
+  width: 40px;
+  padding: 0;
+  border: none;
+  outline: none;
+  top: 50%;
+  margin-top: -10px;
+}
+
+.slick-arrow:active, .slick-arrow:focus {
+  outline: 0;
+  border: none;
+}
+
+.slick-prev {
+  top: 50%;
+  left: -42px;
+}
+
+.slick-next {
+  bottom: 50%;
+  right: -15px;
+}
+
+/* ****************************************** */
+/* 6. Multiple Elements */
+/* ========================================== */
+
+/*Hover Pointer for buttons*/
+.slick-arrow:hover {
+  cursor: pointer;
+}
