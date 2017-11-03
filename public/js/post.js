@@ -47,8 +47,8 @@ $(document).ready(function() {
 			foodDesc = $('#food-desc-input').val().trim();
 
 // callback goes to postNewFood func after updating foodphoto and foodDesc variables.
-			callback();
 		})
+		callback();
 	};
 
 // sends new food entry into food table
@@ -129,7 +129,7 @@ $(document).ready(function() {
 			} else {
 			pairID = data.id;
 			// callback goes to postNewPairing
-			postNewPairing();
+			postNewPairing(postNewRating);
 			};
 		});
 	}
@@ -141,9 +141,9 @@ $(document).ready(function() {
 		};
 		$.post('/api/pairing', newPairing, function(data) {
 			pairID = data.id;
-		// callback goes to postNewRating func
-			callback();
 		});
+	// callback goes to postNewRating func
+		callback();
 	};
 
 	function postNewRating() {
@@ -157,12 +157,6 @@ $(document).ready(function() {
 		});
 		postSuccessModal();
 	}
-
-
-
-	$('#thebutton').on('click', function(event) {
-		newFoodInputs();
-	})
 
 // EMPTIES POST MODAL THEN ADDS INPUT DEPENDING ON FOOD/ALC PARAMATER
 	function emptyAppendModalInputs(replace) {

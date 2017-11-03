@@ -50,9 +50,9 @@ module.exports = function(app) {
 //------------------------------------------------------//
 	
 	app.get('/api/pairing', function(req, res) {
+		console.log('get pairing api func runs')
 		var food_id = req.query.food_id;
 		var alc_id = req.query.alc_id;
-		console.log('pair get QUERY:', pair_name);
 		db.Pairing.findOne({
 			where: {
 				food_id: food_id,
