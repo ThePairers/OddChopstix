@@ -158,32 +158,33 @@
 	    <!-- Modal content-->
 	    <div class="modal-content">
 	      <div class="modal-header">
-	        <h4 class="modal-title">Modal Header</h4>
+	        <h4 id="modal-title" class="modal-title">Modal Header</h4>
 	        <button type="button" class="close" data-dismiss="modal">&times;</button>
 	      </div>
 	      <div class="modal-body">
-					<form>
+	      	<button id="thebutton">button</button>
+					<form id='post-modal-form'>
 					  <div class="form-group post-modal-form-rows row">
-					    <label for="inputEmail3" class="col-sm-2 col-form-label">Food</label>
+					    <label class="col-sm-2 col-form-label">Food</label>
 					    <div class="col-sm-10">
 					      <input class="form-control" id="food-input" placeholder="food" value="burger">
 								<span id="foodReq"></span>
 					    </div>
-							<label for="inputEmail3" class="col-sm-2 col-form-label">Food Description</label>
+<!-- 							<label class="col-sm-2 col-form-label">Food Description</label>
 					    <div class="col-sm-10">
 					      <input class="form-control" id="food-desc-input" placeholder="food" value="burger description">
-					    </div>
+					    </div> -->
 					  </div>
 					  <div class="form-group post-modal-form-rows row">
-					    <label for="inputPassword3" class="col-sm-2 col-form-label">Alcohol</label>
+					    <label class="col-sm-2 col-form-label">Alcohol</label>
 					    <div class="col-sm-10" style="margin-bottom:30px; font-size:8pt; color:red">
 					      <input class="form-control" id="alc-input" placeholder="Alcohol" value="bourbon">
 					      <span id="alcReq"></span>
 					    </div>
-					    <label for="inputPassword3" class="col-sm-2 col-form-label">Alcohol Description</label>
+					    <!-- <label class="col-sm-2 col-form-label">Alcohol Description</label>
 					    <div class="col-sm-10">
 					      <input class="form-control" id="alc-desc-input" placeholder="Alcohol" value="bourbon description">
-					    </div>
+					    </div> -->
 					  </div>
 					  <fieldset class="form-group post-modal-form-rows">
 					    <div class="row">
@@ -228,7 +229,7 @@
 					  	</div>
 					  </div>
 					</form>
-		      <div class="modal-footer post-modal-form-rows">
+		      <div id="post-modal-footer" class="modal-footer post-modal-form-rows">
 						<button id="rate-btn" class="btn btn-primary">Rate!</button>
 		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 		      </div>
