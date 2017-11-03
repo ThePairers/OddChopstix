@@ -15,7 +15,6 @@ module.exports = function(app) {
 				food_name: food_name
 			}
 		}).then(function(dbFood) {
-			console.log('DBFOODNAME', dbFood)
 			res.json(dbFood);
 		});
 	});
@@ -37,7 +36,6 @@ module.exports = function(app) {
 				alc_name: alc_name
 			}
 		}).then(function(dbAlch) {
-			console.log('DBALCH', dbAlch);
 			res.json(dbAlch);
 		});
 	})
@@ -52,16 +50,16 @@ module.exports = function(app) {
 //------------------------------------------------------//
 	
 	app.get('/api/pairing', function(req, res) {
+		console.log('get pairing api func runs')
 		var food_id = req.query.food_id;
 		var alc_id = req.query.alc_id;
-		//console.log('pair get QUERY:', pair_name);
 		db.Pairing.findOne({
 			where: {
 				food_id: food_id,
 				alc_id: alc_id
 			}
 		}).then(function(dbPair) {
-			console.log('dbPair', dbPair);
+
 			res.json(dbPair);
 		});
 	})

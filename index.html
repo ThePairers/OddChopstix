@@ -158,40 +158,32 @@
 	    <!-- Modal content-->
 	    <div class="modal-content">
 	      <div class="modal-header">
-	        <h4 class="modal-title">Modal Header</h4>
+	        <h4 id="modal-title" class="modal-title">Add Your Pairing</h4>
 	        <button type="button" class="close" data-dismiss="modal">&times;</button>
 	      </div>
 	      <div class="modal-body">
-					<form>
-					  <div class="form-group row">
-					    <label for="inputEmail3" class="col-sm-2 col-form-label">Food</label>
+					<form id='post-modal-form'>
+					  <div class="form-group post-modal-form-rows row">
+					    <label class="col-sm-2 col-form-label">Food</label>
 					    <div class="col-sm-10">
-					      <input class="form-control" id="food-input" placeholder="food" value="burger">
+					      <input class="form-control" id="food-input" placeholder="food">
 								<span id="foodReq"></span>
 					    </div>
-							<label for="inputEmail3" class="col-sm-2 col-form-label">Food Description</label>
-					    <div class="col-sm-10">
-					      <input class="form-control" id="food-desc-input" placeholder="food" value="burger description">
-					    </div>
 					  </div>
-					  <div class="form-group row">
-					    <label for="inputPassword3" class="col-sm-2 col-form-label">Alcohol</label>
+					  <div class="form-group post-modal-form-rows row">
+					    <label class="col-sm-2 col-form-label">Alcohol</label>
 					    <div class="col-sm-10" style="margin-bottom:30px; font-size:8pt; color:red">
-					      <input class="form-control" id="alc-input" placeholder="Alcohol" value="bourbon">
+					      <input class="form-control" id="alc-input" placeholder="Alcohol">
 					      <span id="alcReq"></span>
 					    </div>
-					    <label for="inputPassword3" class="col-sm-2 col-form-label">Alcohol Description</label>
-					    <div class="col-sm-10">
-					      <input class="form-control" id="alc-desc-input" placeholder="Alcohol" value="bourbon description">
-					    </div>
 					  </div>
-					  <fieldset class="form-group">
+					  <fieldset class="form-group post-modal-form-rows">
 					    <div class="row">
 					      <legend class="col-form-legend col-sm-2">Rating</legend>
 					      <div class="col-sm-10">
 					        <div class="form-check">
 					          <label class="form-check-label">
-					            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="1" checked> ★
+					            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="1"> ★
 					          </label>
 					        </div>
 					        <div class="form-check">
@@ -221,21 +213,16 @@
 					      </div>
 					    </div>
 					  </fieldset>
-					   <div class="form-group row">
+					   <div class="form-group post-modal-form-rows row">
 					    <label for="review" class="col-sm-2 col-form-label">Review</label>
 					    <div class="col-sm-10">
 					      <textarea type="password" class="form-control" id="review-input" placeholder="What did you think?" text="Great!"></textarea>
 					  	</div>
 					  </div>
-					  
-					  <div class="form-group row">
-					    <div class="col-sm-10">
-					      <button id="rate-btn" class="btn btn-primary">Rate!</button>
-					    </div>
-					  </div>
 					</form>
-		      <div class="modal-footer">
-		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		      <div id="post-modal-footer" class="modal-footer post-modal-form-rows">
+						<button id="rate-btn" class="btn btn-primary">Rate!</button>
+		        <button id="post-modal-close" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 		      </div>
 		    </div>
 		  </div>
