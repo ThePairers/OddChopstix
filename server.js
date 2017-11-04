@@ -46,7 +46,6 @@ cloudinary.config({
 });
 
 
-
 // var myDropzone = new Dropzone(document.getElementById('dropzone-area'), {
 // 	uploadMultiple: false,
 // 	acceptedFiles:'.jpg,.png,.jpeg,.gif',
