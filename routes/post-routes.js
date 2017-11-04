@@ -8,6 +8,7 @@ module.exports = function(app) {
 // connects with public/post.js, checks if food is in food table,
 // if food is in table, returns id, if food is not in table then returns null
 	app.get('/api/food', function(req, res) {
+
 		var food_name = req.query.food_name;
 		console.log('food get QUERY:', food_name);		
 		db.Food.findOne({
@@ -20,6 +21,8 @@ module.exports = function(app) {
 	});
 
 	app.post('/api/food', function(req, res) {
+		console.log(req);
+		console.log(res);
 		console.log('api food post runs')
 		db.Food.create(req.body).then(function(dbFood) {
 			res.json(dbFood);
