@@ -13,6 +13,7 @@ $(document).ready(function() {
 
 	// when submit button is clicked at input
 	$('#rate-btn').on('click', function(event) {
+		console.log('rate btn clicked')
 		event.preventDefault();
 		foodName = $('#food-input').val().trim();
 		alcName = $('#alc-input').val().trim();
@@ -22,6 +23,7 @@ $(document).ready(function() {
 	});
 
 	function checkFood(callback) {
+		console.log('checkfood func runs');
 		var foodQuery = "/?food_name=" + foodName;
 		$.get('/api/food' + foodQuery, function(data) {
 			
@@ -38,6 +40,7 @@ $(document).ready(function() {
 	}
 // GRABS FOOD PHOTO/DESCRIPTION IF NOT FOUND IN DB
 	function newFoodInputs(callback) {
+		console.log('new food inputs')
 		// empties modal and puts new inputs with flags based on paramter
 		emptyAppendModalInputs('food');
 
@@ -47,8 +50,9 @@ $(document).ready(function() {
 			foodDesc = $('#food-desc-input').val().trim();
 
 // callback goes to postNewFood func after updating foodphoto and foodDesc variables.
-		})
 		callback();
+		})
+		
 	};
 
 // sends new food entry into food table
@@ -118,6 +122,7 @@ $(document).ready(function() {
 	}
 
 	function checkPairing(callback) {
+		console.log('checkpairing func runs');
 		var foodQuery = "/?food_id=" + foodID;
 		var alcQuery = "&alc_id=" + alcID;
 		$.get('/api/pairing' + foodQuery + alcQuery, function(data) {
@@ -135,23 +140,32 @@ $(document).ready(function() {
 	}
 
 	function postNewPairing(callback) {
+		console.log('postnewPairing func runs');
+
 		var newPairing = {
 			alc_id: alcID,
 			food_id: foodID,
 		};
+		console.log('newPairing obj', newPairing);
+
 		$.post('/api/pairing', newPairing, function(data) {
+			console.log('api pairing data', data);
 			pairID = data.id;
+			console.log('pairId', pairID)
+			callback();
 		});
 	// callback goes to postNewRating func
-		callback();
+
 	};
 
 	function postNewRating() {
+		console.log('postNewRating');
 		var newRating = {
 			pair_id: pairID,
 			rating: rating,
 			review: newReview
 		};
+		console.log('newrating', newRating)
 		$.post('/api/rating', newRating, function(data) {
 			console.log(data);
 		});
@@ -160,6 +174,7 @@ $(document).ready(function() {
 
 // EMPTIES POST MODAL THEN ADDS INPUT DEPENDING ON FOOD/ALC PARAMATER
 	function emptyAppendModalInputs(replace) {
+		console.log('emptyappend replace param: ', replace)
 		$('#post-modal-form').empty();
 		$('#post-modal-footer').empty();
 		$('#modal-title').html('Additional Info <p>We did not find your ' + replace + ' in our database, please provide additional details');
