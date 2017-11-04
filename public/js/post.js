@@ -11,6 +11,15 @@ $(document).ready(function() {
 	var alcDesc;
 	var pairID; //create logic to generate pair name from food + alc
 
+
+	$('#save-btn').on('click', function(event) {
+		event.preventDefault();
+		foodName = $('#food-input2').val().trim();
+		
+		// newReview = $('#review-input').val().trim();
+		console.log("HI");
+		postNewFood(checkAlc);	
+	});
 	// when submit button is clicked at input
 	$('#rate-btn').on('click', function(event) {
 		event.preventDefault();
