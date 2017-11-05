@@ -50,7 +50,7 @@
 <div class="pos-f-t">
   <div class="collapse" id="navbarToggleExternalContent">
     <div class="bg-inverse p-4">
-      <h4 class="text-white">Collapsed content</h4>
+      <h4 class="text-white"></h4>
       <span class="text-muted"></span>
       <form class="form-inline">
 		
@@ -76,9 +76,8 @@
     </div>
   </div>
   <nav class="navbar navbar-inverse bg-inverse">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon">
-      	<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+      <span class="navbar-toggler-icon" style="color: black;">
       </span>
     </button>
   </nav>
@@ -222,9 +221,9 @@
 	<div id="newPairingModal" class="modal fade" role="dialog">
 	  <div class="modal-dialog">
 	    <!-- Modal content-->
-	    <div class="modal-content">
+	    <div class="modal-content-rating" id="modal-content-rating">
 	      <div class="modal-header">
-	        <h4 id="modal-title" class="modal-title">Add Your Pairing</h4>
+	        <h4 id="modal-title" class="modal-title" style="font-family: 'Abril Fatface', cursive;">🍜OddChopStix</h4>
 	        <button type="button" class="close" data-dismiss="modal">&times;</button>
 	      </div>
 	      <div class="modal-body">
@@ -278,6 +277,9 @@
 					        </div>
 					      </div>
 					    </div>
+					    <!-- <div class="rating">
+							<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+						</div> -->
 					  </fieldset>
 					   <div class="form-group post-modal-form-rows row">
 					    <label for="review" class="col-sm-2 col-form-label">Review</label>
@@ -298,9 +300,9 @@
 	<div id="newFoodModal" class="modal fade" role="dialog">
 	  <div class="modal-dialog">
 	    <!-- Modal content-->
-	    <div class="modal-content">
+	    <div class="modal-content-food" id=" modal-content-food">
 	      <div class="modal-header">
-	        <h4 id="modal-title" class="modal-title">Add a Food</h4>
+	        <h4 id="modal-title-food" class="modal-title">🍜OddChopStix</h4>
 	        <button type="button" class="close" data-dismiss="modal">&times;</button>
 	      </div>
 	      <div class="modal-body">
@@ -332,15 +334,15 @@
 	<div id="newAlcModal" class="modal fade" role="dialog">
 	  <div class="modal-dialog">
 	    <!-- Modal content-->
-	    <div class="modal-content">
+	    <div class="modal-content-alc">
 	      <div class="modal-header">
-	        <h4 id="modal-title" class="modal-title">Add an Alcohol</h4>
+	        <h4 id="modal-title-alcohol" class="modal-title">🍜OddChopStix</h4>
 	        <button type="button" class="close" data-dismiss="modal">&times;</button>
 	      </div>
 	      <div class="modal-body">
 					<form id="upload-widget" method="post" action="/upload" class="dropzone"> 
 					  <div class="form-group post-modal-form-rows row">
-					    <label class="col-sm-2 col-form-label">Alcohol</label>
+					    <label class="col-sm-2 col-form-label">Drink</label>
 					    <div class="col-sm-10">
 					      <input class="form-control" id="alc-input" placeholder="food">
 								<span id="foodReq"></span>
