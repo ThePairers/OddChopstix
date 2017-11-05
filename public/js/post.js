@@ -14,6 +14,8 @@ $(document).ready(function() {
 
 	$('#save-btn').on('click', function(event) {
 		event.preventDefault();
+		cloudinary.v2.uploader.upload("../images/jameson.jpg", 
+    	function(error, result) {console.log(result)});
 		foodName = $('#food-input2').val().trim();
 		
 		// newReview = $('#review-input').val().trim();

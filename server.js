@@ -12,6 +12,7 @@ var bodyParser = require("body-parser");
 var app = express();
 var PORT = process.env.PORT || 8080;
 
+
 // // Requiring our models for syncing
 var db = require("./models");
 
@@ -29,6 +30,7 @@ app.use(express.static("public"));
 require("./routes/html-routes.js")(app);
 require("./routes/post-routes.js")(app);
 require("./routes/api-get-routes.js")(app);
+// require("./routes/dropzone-routes.js")(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
