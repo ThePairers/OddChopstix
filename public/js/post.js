@@ -11,6 +11,26 @@ $(document).ready(function() {
 	var alcDesc;
 	var pairID; //create logic to generate pair name from food + alc
 
+<<<<<<< Updated upstream
+=======
+
+	$('#save-btn').on('click', function(event) {
+		event.preventDefault();
+		foodName = $('#food-input2').val().trim();
+		
+		// newReview = $('#review-input').val().trim();
+		console.log("HI");
+		postNewFood(checkAlc);	
+	});
+	// when newpairingmodal btn is clicked
+	$('#newPairingModalBtn').on('click', function(event) {
+		event.preventDefault();
+		$('.rating-stars').prop('checked', false);
+		$('#food-input').val('');
+		$('#alc-input').val('');
+		$('#review-input').val('');
+	})
+>>>>>>> Stashed changes
 	// when submit button is clicked at input
 	$('#rate-btn').on('click', function(event) {
 		console.log('rate btn clicked')
@@ -48,11 +68,16 @@ $(document).ready(function() {
 			event.preventDefault();
 			foodPhoto = $('#food-photo-input').val().trim();
 			foodDesc = $('#food-desc-input').val().trim();
-
+			callback();
 // callback goes to postNewFood func after updating foodphoto and foodDesc variables.
+<<<<<<< Updated upstream
 		callback();
 		})
 		
+=======
+		})
+
+>>>>>>> Stashed changes
 	};
 
 // sends new food entry into food table
@@ -151,7 +176,10 @@ $(document).ready(function() {
 		$.post('/api/pairing', newPairing, function(data) {
 			console.log('api pairing data', data);
 			pairID = data.id;
+<<<<<<< Updated upstream
 			console.log('pairId', pairID)
+=======
+>>>>>>> Stashed changes
 			callback();
 		});
 	// callback goes to postNewRating func
