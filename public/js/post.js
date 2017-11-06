@@ -11,6 +11,14 @@ $(document).ready(function() {
 	var alcDesc;
 	var pairID; //create logic to generate pair name from food + alc
 
+	// when newpairingmodal btn is clicked
+	$('#newPairingModalBtn').on('click', function(event) {
+		event.preventDefault();
+		$('.rating-stars').prop('checked', false);
+		$('#food-input').val('');
+		$('#alc-input').val('');
+		$('#review-input').val('');
+	})
 
 	$('#save-btn').on('click', function(event) {
 		event.preventDefault();
@@ -44,7 +52,7 @@ $(document).ready(function() {
 			foodID = data.id;
 			// callback goes to checkAlc function with food id
 			callback();
-			};
+			};	
 		});
 	}
 // GRABS FOOD PHOTO/DESCRIPTION IF NOT FOUND IN DB

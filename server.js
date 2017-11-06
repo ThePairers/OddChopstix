@@ -31,6 +31,7 @@ require("./routes/html-routes.js")(app);
 require("./routes/post-routes.js")(app);
 require("./routes/api-get-routes.js")(app);
 // require("./routes/dropzone-routes.js")(app);
+require("./routes/shutterstock-routes.js")(app);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
@@ -46,6 +47,8 @@ cloudinary.config({
   api_key: '637332173612438',
   api_secret: 'sSafHcfjsB-1v8FhJwWOweKGfMg'
 });
+
+
 
 
 // var myDropzone = new Dropzone(document.getElementById('dropzone-area'), {
