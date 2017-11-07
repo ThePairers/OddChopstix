@@ -18,10 +18,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     alc_photo: {
       type: DataTypes.STRING
-    },
-    alc_description: {
-      type: DataTypes.STRING
-    }
+    }`
   });
   return Alcohol;
 };
