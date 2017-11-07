@@ -1,5 +1,5 @@
 $(document).ready(function() {
-
+	var alcohols = [];
 	// search query submit button
 	$('#search-btn').on('click', function(event) {
 		event.preventDefault();
@@ -82,7 +82,7 @@ $(document).ready(function() {
 		$.get('/api/foods', function(data) {
 			for (var i = 0; i < data.length; i++) {
 				console.log("food data: ", data);
-				var item = '<div class="image slick-slide slick-active" data-type="food" data-id="' + data[i].id + '"><h5>' + data[i].food_name + '</h5><img src="' + data[i].food_photo + '"></div>'
+				var item = '<div class="image slick-slide slick-active" data-toggle="modal" data-target="#exampleModal" data-type="food" data-id="' + data[i].id + '"><h5>' + data[i].food_name + '</h5><img src="' + data[i].food_photo + '"></div>'
 				$("#food-search").slick('slickAdd', item);
 			}
 		});
@@ -90,9 +90,10 @@ $(document).ready(function() {
 
 	var htmlAlcDiv = function() {
 		$.get('/api/alcs', function(data) {
+			alcohols = data;
 			console.log("alc data: ", data);
 			for (var i = 0; i < data.length; i++) {
-				var item = '<div class="image slick-slide slick-active" data-type="alc" data-id="' + data[i].id + '"><h5>' + data[i].alc_name + '</h5><img src="' + data[i].alc_photo + '"></div>'
+				var item = '<div class="image slick-slide slick-active" data-toggle="modal" data-target="#exampleModal" data-type="alc" data-id="' + data[i].id + '"><h5>' + data[i].alc_name + '</h5><img src="' + data[i].alc_photo + '"></div>'
 				$("#alcohol-search").slick('slickAdd', item);
 			}
 		});
@@ -120,7 +121,17 @@ $(document).ready(function() {
 
 	function getFoodPairs(id) {
 		var foodQuery = "/?food_id=" + id;
-		$.get('/api/pairs/food' + foodQuery, function(data) {
+		$.get(('/api/pairs/food' + foodQuery), function(data) {
+					console.log(data);
+					console.log(alcohols);
+
+					// jQuery("<img/>").prependTo("#pairings-show-modal").attr({
+					//    src: alcohols[0].alc_photo,
+					//    alt: '',
+					//    height: '100px',
+					//    width: "100px"
+					// });
+
 			if (!data) {
 				console.log("no pairs");
 			} else {

@@ -26,11 +26,8 @@ CREATE TABLE pairings(
 	id INTEGER(11) AUTO_INCREMENT NOT NULL,
 	alc_id INTEGER(11) NOT NULL,
 	food_id INTEGER(11) NOT NULL,
+	pair_name VARCHAR(100) NOT NULL,
 	rating INTEGER(1) NOT NULL,
-	review VARCHAR(500),
-	review_date TIMESTAMP NULL DEFAULT NULL,
-	FOREIGN KEY (alc_id) REFERENCES alcohols(id),
-	FOREIGN KEY (food_id) REFERENCES foods(id),
 	PRIMARY KEY(id)
 
 );

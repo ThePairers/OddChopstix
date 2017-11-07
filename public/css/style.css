@@ -9,11 +9,17 @@
 6. Multiple Elements
 
 /* Header Designations */
-/*  
-    h1 = Jumbotron title
+  
+   /* h1 = Jumbotron title
     h4 = Carousel titles
     h5 = Carousel image captions
-/* ****************************************** */
+*/
+
+    body {
+      background-color: #fae4d4;
+  
+    }
+/* ****************************************** 
 /* 1. NAVBAR */
 /* ========================================== */
 
@@ -50,6 +56,14 @@
 .button-toolbar {
   padding: 3px 3px 3px 3px;
 }
+ #newPairingModalBtn {
+  background-color: white;
+  opacity: 90%;
+  color: black;
+  border: 2px solid lightgrey;
+  border-radius: 2px;
+  box-shadow: black 0.3em 0.3em 0.3em;
+ }
 
 /* ****************************************** */
 /* 3. MODALS */
@@ -76,9 +90,16 @@
   width: 110%;
 }
 
+.modal-content-pairing {
+  background-color: firebrick;
+  opacity: 0.90; 
+  width: 800px;
+  height: 800px;
+}
+
 
 .model-title {
-  font-family: 'Abril Fatface', cursive;">
+  font-family: 'Abril Fatface', cursive;
   color: white;
 }
 
@@ -125,6 +146,9 @@
 .carousel h4 {
   margin-left: .5rem;
 }
+.carousel h4 {
+    text-align: center;
+}
 
 #alcohol-carousel {
   margin-top: 10%;
@@ -156,24 +180,26 @@
   color: firebrick;
 }
 .slick-slide img {
-  width: 88%;
-  height:200px;
+  width: 80%;
+  height: 250px;
   box-shadow: none;
+  border: 10px solid white;
 }
 
 /*image caption*/
 .slick-slide h5 {
   display: none;
   color: white;
-  width: 88%;
+  width: 80%;
   height:20%;
   position: absolute;
+  text-indent: 15px;
   margin-bottom: 0px;
   bottom: 0;
   left: 0;
   text-align: center
-  background: #000;
-  background: linear-gradient(to top, #000 40%, rgba(0, 0, 0, 0) 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+  background: #e7863c;
+  background: linear-gradient(to top, #e7863c 40%, rgba(0, 0, 0, 0) 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
 }
 
 .slick-slide:hover h5 {
@@ -222,3 +248,14 @@
 .slick-arrow:hover {
   cursor: pointer;
 }
+ 
+ #fixed-bottom {
+  background-color: #e7863c;
+  opacity: 90%;
+  height: 170px;
+  margin: 0%;
+
+  
+ }
+
+
