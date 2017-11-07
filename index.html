@@ -7,7 +7,7 @@
 	<!-- slick for carousels -->
 	<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.css"/>
 
-	<link rel="stylesheet" href="css/dropzone.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 <!-- 	<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick-theme.css"/> -->
 
 	<!-- custom stylesheet -->
@@ -44,6 +44,7 @@
 </head>
 
 <body>
+	<div class="wrapper">
 <!-- ======================================== -->
 <!-- **************************************** -->
 <!-- NAV BAR SECTION ======================== -->
@@ -65,57 +66,40 @@
 		    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="alcohol"> Alcohol
 		  </label>
 		</div>
-		<div class="form-check form-check-inline">
-		  <label class="form-check-label">
-		    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="pairings"> Pairings
-		  </label>
-		</div>
+
 	    <button class="btn btn-outline-dark my-2 my-sm-0" id="search-btn">Search</button>
 
 	  </form>
     </div>
   </div>
+<<<<<<< Updated upstream
   <nav class="navbar navbar-inverse bg-inverse">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon">
       	<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+=======
+  <nav class="navbar navbar-light bg-light" style= "background-color: white;">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+      <span class="navbar-toggler-icon" style="color: black;">
+>>>>>>> Stashed changes
       </span>
     </button>
   </nav>
 </div>
-<!-- <nav class="navbar navbar-light bg-light justify-content-between">
-  <a class="navbar-brand">🍜OddChopstix🍺</a>
-  <form class="form-inline">
-		
-	  <input class="form-control mr-sm-2" type="search" id="search-input" placeholder="Search"  aria-label="Search">
-  	<div class="form-check form-check-inline">
-  		<label class="form-check-label">
-    		<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="food"> Food
-  		</label>
-		</div>
-		<div class="form-check form-check-inline">
-		  <label class="form-check-label">
-		    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="alcohol"> Alcohol
-		  </label>
-		</div>
-		<div class="form-check form-check-inline">
-		  <label class="form-check-label">
-		    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="pairings"> Pairings
-		  </label>
-		</div>
-	    <button class="btn btn-outline-dark my-2 my-sm-0" id="search-btn">Search</button>
 
-	  </form>
-</nav> -->
  <!-- END NAV BAR -->
 <!-- ================================================ -->
 <!-- ************************************************ -->
 <div container="header">
 	<div class="jumbotron">
 		<h1 class="display-3" style="font-family: 'Abril Fatface', cursive;">🍜OddChopStix</h1>
-		  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+		  <p class="lead">Pair your favorite meals with a libation and rate it!</p>
 		  <hr class="my-4">
-		  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+		  <p></p>
+	
+	<div class="card">
+  <div class="card-body">
+ 
 	 <form class="form-inline">
 		<div class="form-check form-check-inlineco">
 		
@@ -123,35 +107,41 @@
 				<!-- Trigger the modal with a button -->
 				<div class="button-toolbar">
 				<button  type="button" class="btn btn-outline-dark my-2 my-sm-0" data-toggle="modal" data-target="#newFoodModal">
-					+🍔
+					+ FOOD
 				</button>
 				
 				<button  type="button" class="btn btn-outline-dark my-2 my-sm-0" data-toggle="modal" data-target="#newAlcModal">
-					+🍸
+					+ DRINK
 				</button>
 			
+<<<<<<< Updated upstream
 				<button  type="button" class="btn btn-outline-dark my-2 my-sm-0" data-toggle="modal" data-target="#newPairingModal">
 					+💕
+=======
+				<button id="newPairingModalBtn" type="button" class="btn btn-outline-dark my-2 my-sm-0" data-toggle="modal" data-target="#newPairingModal">
+					+ PAIRING
+>>>>>>> Stashed changes
 				</button>
 				</div>
   		</label>
   		
   	</div>
   </form>
+   </div>
+</div>
 	</div>	  <!-- Jumbotron end div -->
 </div>
 <!-- ================================================ -->
-	<br>
-	  <br>
-
+<br>
+<div class="carousel-container">
 <!-- Food Carousel that displays the data from the food table -->
-<div id='food-carousel' class="carousel">
+	<div id='food-carousel' class="carousel">
 	<h4>
-		Chow
+		Meals
 	</h4>
 	<div id="food-search" class="multiple-items">
 		<div class="image slick-slide slick-active">
-			<h5>
+			<h5 class>
 				Caption
 			</h5>
 			<img src="images/ham.jpg">
@@ -177,10 +167,10 @@
 		</div>
 
 	</div>
-</div>
+	</div>
 
 <!-- Alcohol Carousel that displays the data from the alcohol table -->
-<div id="alcohol-carousel" class="carousel">
+	<div id="alcohol-carousel" class="carousel">
 	<h4>
 		Booze
 	</h4>
@@ -211,10 +201,9 @@
 		</div>
 
 	</div>
+	</div>
+
 </div>
-
-
-
 <!-- ======================================== -->
 <!-- **************************************** -->
 <!-- ======================================== -->
@@ -362,6 +351,6 @@
 	</div><!-- ENDS POST INPUT FORM MODAL -->
 
 <script type="text/javascript" src="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.min.js"></script>
-
+</div>
 </body>
 </html>
