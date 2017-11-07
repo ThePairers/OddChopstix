@@ -58,7 +58,7 @@ module.exports = function(app) {
 // DISPLAYS ALL FOOD/ALCOHOL/PAIRINGS IN ROWS ////////////////
 // -----------------------------------------------------------
 
-	app.get("/api/food", function(req, res) {
+	app.get("/api/foods", function(req, res) {
 		db.Food.findAll({
 		}).then(function(dbPost) {
 			res.json(dbPost);
