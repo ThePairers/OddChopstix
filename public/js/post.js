@@ -35,7 +35,7 @@ $(document).ready(function() {
 		foodName = $('#food-input').val().trim();
 		alcName = $('#alc-input').val().trim();
 		rating = document.querySelector('[name="gridRadios"]:checked').value;
-		newReview = $('#review-input').val().trim();
+		// newReview = $('#review-input').val().trim();
 		checkFood(checkAlc);	
 	});
 
