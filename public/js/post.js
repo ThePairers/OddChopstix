@@ -1,6 +1,7 @@
 $(document).ready(function() {
 	var newRating;
 	var newReview;
+	var photo; //global variable changes based on getShutterimg func
 	var foodID;
 	var foodName;
 	var foodPhoto;
@@ -40,6 +41,16 @@ $(document).ready(function() {
 		checkFood(checkAlc);	
 	});
 
+	function getShutterImg(query) {
+		console.log('getshutterimg query runs');
+		$.get('/api/shutter/' + query, function(data) {
+			console.log('return data', data);
+			var image_url = data[0].assets.large_thumb.url;
+			photo = image_url;		
+		});
+	}
+
+
 	function checkFood(callback) {
 		var foodQuery = "/?food_name=" + foodName;
 		$.get('/api/food' + foodQuery, function(data) {
@@ -73,9 +84,10 @@ $(document).ready(function() {
 // sends new food entry into food table
 	function postNewFood(callback) {
 		console.log('postNewFood func runs')
+		getShutterImg(foodName);
 		var newFood = {
 			food_name: foodName,
-			food_photo: foodPhoto,
+			food_photo: photo,
 			food_description: foodDesc
 		}
 		$.post('/api/food', newFood, function(data) {
@@ -120,10 +132,10 @@ $(document).ready(function() {
 	function postNewAlc(callback) {
 		console.log('postNewAlc runs');
 		// REPLACES MODAL WITH NEW ALC INPUTS
-
+		getShutterImg(alcName);
 		var newAlcohol = {
 			alc_name: alcName,
-			alc_photo: alcPhoto,
+			alc_photo: photo,
 			alc_description: alcDesc
 		}
 		console.log('newAlcohol after inputs', newAlcohol);

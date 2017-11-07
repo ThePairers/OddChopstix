@@ -94,10 +94,4 @@ $(document).ready(function() {
 		});
 	}
 
-	var getShutterImg = function(query) {
-
-		$.get('/api/shutter/' + query, function(data) {
-			console.log('return data', data);
-		});
-	}
 });
