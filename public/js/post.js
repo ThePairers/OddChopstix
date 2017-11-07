@@ -37,6 +37,7 @@ $(document).ready(function() {
 		rating = document.querySelector('[name="gridRadios"]:checked').value;
 		newReview = $('#review-input').val().trim();
 		checkFood(checkAlc);	
+		$('#newPairingModal').modal('hide');
 	});
 
 	function getShutterImg(query) {
@@ -77,11 +78,11 @@ $(document).ready(function() {
 
 // GRABS FOOD PHOTO/DESCRIPTION IF NOT FOUND IN DB
 	function newFoodInputs() {
-		$('#newPairingModal').modal('hide');
-		$('#newFoodModal').modal('show');
+
 		$('.img-zone').empty();
 
 		getShutterImg(foodName);
+		$('#newFoodModal').modal('show');
 
 		$('#food-submit-btn').on('click', function(event) {
 			event.preventDefault();
@@ -130,10 +131,11 @@ $(document).ready(function() {
 
 	function newAlcInputs(callback) {
 		console.log('newAlcInputs runs');
-		$('#newAlcModal').modal('show');
+
 		$('.img-zone').empty();
 
 		getShutterImg(alcName);
+		$('#newAlcModal').modal('show');
 
 		$('#alc-submit-btn').on('click', function(event) {
 			event.preventDefault();
@@ -161,8 +163,8 @@ $(document).ready(function() {
 	}
 
 	function checkPairing(callback) {
-		var foodQuery = "/?food_id=" + foodID + "&food_name=" + foodName;
-		var alcQuery = "&alc_id=" + alcID + "&alc_name=" + alcName;
+		var foodQuery = "/?food_id=" + foodID;
+		var alcQuery = "&alc_id=" + alcID;
 		$.get('/api/pairing' + foodQuery + alcQuery, function(data) {
 			console.log("data: ", data);
 			// if the food is not found in the table it is created
@@ -178,9 +180,11 @@ $(document).ready(function() {
 	}
 
 	function postNewPairing(callback) {
+		var pairName = foodName + " & " + alcName;
 		var newPairing = {
+			pair_name: pairName,
 			alc_id: alcID,
-			food_id: foodID,
+			food_id: foodID
 		};
 		$.post('/api/pairing', newPairing, function(data) {
 			pairID = data.id;
