@@ -1,5 +1,5 @@
 $(document).ready(function() {
-
+	var pairs = [];
 	// search query submit button
 	$('#search-btn').on('click', function(event) {
 		event.preventDefault();
@@ -10,6 +10,7 @@ $(document).ready(function() {
 
 		var radioButtons = document.querySelector('[name="inlineRadioOptions"]:checked').value;
 		console.log('radioButtons', radioButtons);		
+		$('.search-modal-body').empty();
 		// Depending on which radio button is clicked, will query all matching food/alch/pairing names
 		switch (radioButtons) {
 			case 'food':
@@ -18,13 +19,11 @@ $(document).ready(function() {
 			case 'alcohol':
 				getAlcohols(searchQuery);
 				break;
-			case 'pairings':
-				getPairings(searchQuery);
-				break;
 			default:
 				alert('choose a radio button to search');
 		}
 	});
+
 	// grabs all matching foods from foods table
 	var getFoods = function(query) {
 		console.log('getfoods func runs');
@@ -35,26 +34,41 @@ $(document).ready(function() {
 			if (data.length == 0) {
 				console.log('no results found');
 			} else {
-	// SENDS FOOD DATA TO HTML
+	// Pushes ids into foodIdArr which get sent to get pairId as Array
+				foodId = data.id;
+				getFoodPairs(foodId, showSearchModal);
+
 				console.log('results found')
 			}
 		});
 	};
 	// grabs all matching alch from alcohol table
+	// search button clicked, gets id of food/alch in indiv table.
+	// serach pairing table that matches the id
+	// pull data. show pair-name and rating average
 	var getAlcohols = function(query) {
 		console.log('get alch func runs');
 		$.get('/api/alcohol/' + query, function(data) {
 			console.log(data);
-			console.log(typeof data);
 	// if statement when no results found 
 			if (data.length == 0) {
 				console.log('no results found');
 			} else {
 	// SENDS ALCOHOL DATA TO HTML
+				alcId = data[i].id;
+				
+				getAlcPairs(alcId, showSearchModal);
+
 				console.log('results found')
 			}
 		});
 	};
+
+	var showSearchModal = function() {
+		$('.search-modal-body').append(pairs)
+		$('#searchModal').modal('show')
+
+	}
 
 	// grabs all matching pairings from pairing table
 	/*
@@ -116,9 +130,8 @@ $(document).ready(function() {
 		}
 	});
 
-	var pairs = [];
-
-	function getFoodPairs(id) {
+	function getFoodPairs(id,callback) {
+// empty pairs array at start?
 		var foodQuery = "/?food_id=" + id;
 		$.get('/api/pairs/food' + foodQuery, function(data) {
 			if (!data) {
@@ -136,12 +149,13 @@ $(document).ready(function() {
 				}
 			}
 		}).then(function() {
+			callback();
 			console.log(pairs);
 			calcRatings();
 		})
 	}
 	
-	function getAlcPairs(id) {
+	function getAlcPairs(id, callback) {
 		var alcQuery = "/?alc_id=" + id;
 		$.get('/api/pairs/alc' + alcQuery, function(data) {
 			if (!data) {
@@ -160,6 +174,7 @@ $(document).ready(function() {
 			}
 		}).then(function() {
 			console.log(pairs);
+      callback()
 			calcRatings();
 		});
 	}

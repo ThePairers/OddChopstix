@@ -16,7 +16,6 @@ module.exports = function(app) {
 // =============================================================
 // gets all foods with same name
 	app.get('/api/food/:food_name', function(req, res) {
-		console.log(req);
 		db.Food.findAll({
 			where: {
 				food_name: req.params.food_name
