@@ -35,7 +35,8 @@ $(document).ready(function() {
 				console.log('no results found');
 			} else {
 	// Pushes ids into foodIdArr which get sent to get pairId as Array
-				foodId = data.id;
+				var foodId = data[0].id;
+				console.log('foodId', foodId);
 				getFoodPairs(foodId, showSearchModal);
 
 				console.log('results found')
@@ -55,8 +56,8 @@ $(document).ready(function() {
 				console.log('no results found');
 			} else {
 	// SENDS ALCOHOL DATA TO HTML
-				alcId = data[i].id;
-				
+				var alcId = data[0].id;
+				console.log('alcId', alcId);
 				getAlcPairs(alcId, showSearchModal);
 
 				console.log('results found')
@@ -65,8 +66,11 @@ $(document).ready(function() {
 	};
 
 	var showSearchModal = function() {
-		$('.search-modal-body').append(pairs)
-		$('#searchModal').modal('show')
+		$('.search-modal-body').empty();
+		for (var i = 0; i < pairs.length; i++) {
+			$('.search-modal-body').append(pairs[i].pair_name);
+		};
+			$('#searchModal').modal('show')
 
 	}
 
@@ -130,7 +134,7 @@ $(document).ready(function() {
 		}
 	});
 
-	function getFoodPairs(id,callback) {
+	function getFoodPairs(id, callback) {
 // empty pairs array at start?
 		var foodQuery = "/?food_id=" + id;
 		$.get('/api/pairs/food' + foodQuery, function(data) {
@@ -157,6 +161,7 @@ $(document).ready(function() {
 	
 	function getAlcPairs(id, callback) {
 		var alcQuery = "/?alc_id=" + id;
+		console.log(alcQuery);
 		$.get('/api/pairs/alc' + alcQuery, function(data) {
 			if (!data) {
 				console.log("no pairs");
