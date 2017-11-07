@@ -85,6 +85,7 @@ $(document).ready(function() {
 		$('#newFoodModal').modal('show');
 
 		$('#food-submit-btn').on('click', function(event) {
+			event.stopImmediatePropagation();
 			event.preventDefault();
 			foodPhoto = $('.img-clicked').attr('src');
 			console.log(foodPhoto);
@@ -113,14 +114,14 @@ $(document).ready(function() {
 	}
 
 	function checkAlc(callback) {
-		console.log('checkAlc runs')
+		console.log('checkAlc runs');
 		var alcQuery = "/?alc_name=" + alcName;
 		$.get('/api/alcohol' + alcQuery, function(data) {
 			
 			// if the food is not found in the table it is created
 			// with postNewFood function
 			if (!data) {
-				newAlcInputs(postNewAlc);
+				newAlcInputs();
 			} else {
 			alcID = data.id;
 			// if success, goes to checkPairing
@@ -138,7 +139,10 @@ $(document).ready(function() {
 		$('#newAlcModal').modal('show');
 
 		$('#alc-submit-btn').on('click', function(event) {
-			event.preventDefault();
+			event.stopImmediatePropagation();
+			event.preventDefault();			
+			alert('alc-submit-btn clicked');
+
 			alcPhoto = $('.img-clicked').attr('src');
 		$('#newAlcModal').modal('hide');
 			postNewAlc(checkPairing);
@@ -174,12 +178,13 @@ $(document).ready(function() {
 			} else {
 			pairID = data.id;
 			// callback goes to postNewPairing
-			postNewPairing(postNewRating);
+				postNewRating();
 			};
 		});
 	}
 
 	function postNewPairing(callback) {
+		alert('postnewpairing fun runs');
 		var pairName = foodName + " & " + alcName;
 		var newPairing = {
 			pair_name: pairName,
