@@ -178,7 +178,7 @@ $(document).ready(function() {
 	}
 
 	function postNewPairing(callback) {
-		var newPairing = {
+		var newPairing = {			
 			alc_id: alcID,
 			food_id: foodID,
 		};
