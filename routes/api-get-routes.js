@@ -40,6 +40,7 @@ module.exports = function(app) {
 	})
 // gets all pairings with same name
 // add functions to request to change name to ids
+	/*
 	app.get('/api/food/:pairing_name', function(req, res) {
 
 		db.Pairing.findAll({
@@ -52,12 +53,45 @@ module.exports = function(app) {
 			console.log(dbPost);
 		});
 	});
+	*/
 // ===========================================================
 // DISPLAYS ALL FOOD/ALCOHOL/PAIRINGS IN ROWS ////////////////
 // -----------------------------------------------------------
 
-	app.get("/api/food", function(req, res) {
+	app.get("/api/foods", function(req, res) {
 		db.Food.findAll({
+		}).then(function(dbPost) {
+			res.json(dbPost);
+			console.log(dbPost);
+		})
+	})
+	
+	app.get("/api/alcs", function(req, res) {
+		db.Alcohol.findAll({
+		}).then(function(dbPost) {
+			res.json(dbPost);
+			console.log(dbPost);
+		})
+	})
+
+	app.get("/api/pairs/food", function(req, res) {
+		var food_id = req.query.food_id;
+		db.Pairing.findAll({
+			where: {
+				food_id: food_id
+			}
+		}).then(function(dbPost) {
+			res.json(dbPost);
+			console.log(dbPost);
+		})
+	})
+
+	app.get("/api/pairs/alc", function(req, res) {
+		var alc_id = req.query.alc_id;
+		db.Pairing.findAll({
+			where: {
+				alc_id: alc_id
+			}
 		}).then(function(dbPost) {
 			res.json(dbPost);
 			console.log(dbPost);

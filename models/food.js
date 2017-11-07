@@ -19,9 +19,6 @@ module.exports = function(sequelize, DataTypes) {
     food_photo: {
       type: DataTypes.STRING
     },
-    food_description: {
-      type: DataTypes.STRING
-    },
     createdAt: {
       allowNull: false,
       type: DataTypes.DATE,

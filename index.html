@@ -26,16 +26,15 @@
 
 
 	<!-- js dropzone  -->
-	<script type="text/javascript". src="./js/dropzone.js"></script>
+	<!-- <script type="text/javascript". src="./js/dropzone.js"></script> -->
 	<!-- js photo -->
-	<script type="text/javascript" src="./js/photodrop.js"></script>
+	<!-- <script type="text/javascript" src="./js/photodrop.js"></script> -->
 	<!-- js post new -->
 	<script type="text/javascript" src="./js/post.js"></script>
-	<!-- js get from server -->
-	<script type="text/javascript" src="./js/get.js"></script>
 	<!-- js open/do stuff to html -->
 	<script type="text/javascript" src="./js/html.js"></script>
-
+	<!-- js get from server -->
+	<script type="text/javascript" src="./js/get.js"></script>
 
 	
 	
@@ -51,7 +50,7 @@
 <div class="pos-f-t">
   <div class="collapse" id="navbarToggleExternalContent">
     <div class="bg-inverse p-4">
-      <h4 class="text-white">Collapsed content</h4>
+      <h4 class="text-white"></h4>
       <span class="text-muted"></span>
       <form class="form-inline">
 		
@@ -72,16 +71,11 @@
 	  </form>
     </div>
   </div>
-<<<<<<< Updated upstream
-  <nav class="navbar navbar-inverse bg-inverse">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon">
-      	<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
-=======
+
   <nav class="navbar navbar-light bg-light" style= "background-color: white;">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>
       <span class="navbar-toggler-icon" style="color: black;">
->>>>>>> Stashed changes
+
       </span>
     </button>
   </nav>
@@ -90,6 +84,7 @@
  <!-- END NAV BAR -->
 <!-- ================================================ -->
 <!-- ************************************************ -->
+
 <div container="header">
 	<div class="jumbotron">
 		<h1 class="display-3" style="font-family: 'Abril Fatface', cursive;">🍜OddChopStix</h1>
@@ -113,14 +108,11 @@
 				<button  type="button" class="btn btn-outline-dark my-2 my-sm-0" data-toggle="modal" data-target="#newAlcModal">
 					+ DRINK
 				</button>
-			
-<<<<<<< Updated upstream
+
 				<button  type="button" class="btn btn-outline-dark my-2 my-sm-0" data-toggle="modal" data-target="#newPairingModal">
-					+💕
-=======
 				<button id="newPairingModalBtn" type="button" class="btn btn-outline-dark my-2 my-sm-0" data-toggle="modal" data-target="#newPairingModal">
 					+ PAIRING
->>>>>>> Stashed changes
+
 				</button>
 				</div>
   		</label>
@@ -140,6 +132,7 @@
 		Meals
 	</h4>
 	<div id="food-search" class="multiple-items">
+
 		<div class="image slick-slide slick-active">
 			<h5 class>
 				Caption
@@ -166,6 +159,7 @@
 			<img src="images/jameson.jpg">
 		</div>
 
+
 	</div>
 	</div>
 
@@ -175,30 +169,6 @@
 		Booze
 	</h4>
 	<div id="alcohol-search" class="multiple-items">
-		<div class="image slick-slide slick-active">
-			<h5>
-				Caption
-			</h5>
-			<img src="images/ham.jpg">
-		</div>
-		<div class="image slick-slide slick-active">
-			<h5>
-				Caption
-			</h5>
-			<img src="images/jameson.jpg">
-		</div>
-		<div class="image slick-slide slick-active">
-			<h5>
-				Caption
-			</h5>
-			<img src="images/ham.jpg">
-		</div>
-		<div class="image slick-slide slick-active">
-			<h5>
-				Caption
-			</h5>
-			<img src="images/jameson.jpg">
-		</div>
 
 	</div>
 	</div>
@@ -210,10 +180,9 @@
 <!-- POST INPUT MODAL -->
 	<div id="newPairingModal" class="modal fade" role="dialog">
 	  <div class="modal-dialog">
-	    <!-- Modal content-->
-	    <div class="modal-content">
+	    <div class="modal-content modal-content-rating" id="modal-content-rating">
 	      <div class="modal-header">
-	        <h4 id="modal-title" class="modal-title">Add Your Pairing</h4>
+	        <h4 id="modal-title" class="modal-title" style="font-family: 'Abril Fatface', cursive;">🍜OddChopStix</h4>
 	        <button type="button" class="close" data-dismiss="modal">&times;</button>
 	      </div>
 	      <div class="modal-body">
@@ -267,6 +236,9 @@
 					        </div>
 					      </div>
 					    </div>
+					    <!-- <div class="rating">
+							<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+						</div> -->
 					  </fieldset>
 					   <div class="form-group post-modal-form-rows row">
 					    <label for="review" class="col-sm-2 col-form-label">Review</label>
@@ -287,9 +259,9 @@
 	<div id="newFoodModal" class="modal fade" role="dialog">
 	  <div class="modal-dialog">
 	    <!-- Modal content-->
-	    <div class="modal-content">
+	    <div class="modal-content modal-content-food" id=" modal-content-food">
 	      <div class="modal-header">
-	        <h4 id="modal-title" class="modal-title">Add a Food</h4>
+	        <h4 id="modal-title-food" class="modal-title">🍜OddChopStix</h4>
 	        <button type="button" class="close" data-dismiss="modal">&times;</button>
 	      </div>
 	      <div class="modal-body">
@@ -321,15 +293,15 @@
 	<div id="newAlcModal" class="modal fade" role="dialog">
 	  <div class="modal-dialog">
 	    <!-- Modal content-->
-	    <div class="modal-content">
+	    <div class="modal-content modal-content-alc">
 	      <div class="modal-header">
-	        <h4 id="modal-title" class="modal-title">Add an Alcohol</h4>
+	        <h4 id="modal-title-alcohol" class="modal-title">🍜OddChopStix</h4>
 	        <button type="button" class="close" data-dismiss="modal">&times;</button>
 	      </div>
 	      <div class="modal-body">
 					<form id="upload-widget" method="post" action="/upload" class="dropzone"> 
 					  <div class="form-group post-modal-form-rows row">
-					    <label class="col-sm-2 col-form-label">Alcohol</label>
+					    <label class="col-sm-2 col-form-label">Drink</label>
 					    <div class="col-sm-10">
 					      <input class="form-control" id="alc-input" placeholder="food">
 								<span id="foodReq"></span>

@@ -1,6 +1,7 @@
 $(document).ready(function() {
 	var newRating;
 	var newReview;
+	var photo; //global variable changes based on getShutterimg func
 	var foodID;
 	var foodName;
 	var foodPhoto;
@@ -11,11 +12,19 @@ $(document).ready(function() {
 	var alcDesc;
 	var pairID; //create logic to generate pair name from food + alc
 
+	// when newpairingmodal btn is clicked
+	$('#newPairingModalBtn').on('click', function(event) {
+		event.preventDefault();
+		$('.rating-stars').prop('checked', false);
+		$('#food-input').val('');
+		$('#alc-input').val('');
+		$('#review-input').val('');
+	})
 
 	$('#save-btn').on('click', function(event) {
 		event.preventDefault();
-		cloudinary.v2.uploader.upload("../images/jameson.jpg", 
-    	function(error, result) {console.log(result)});
+		//cloudinary.v2.uploader.upload("../images/jameson.jpg", 
+    	//function(error, result) {console.log(result)});
 		foodName = $('#food-input2').val().trim();
 		
 		// newReview = $('#review-input').val().trim();
@@ -32,6 +41,16 @@ $(document).ready(function() {
 		checkFood(checkAlc);	
 	});
 
+	function getShutterImg(query) {
+		console.log('getshutterimg query runs');
+		$.get('/api/shutter/' + query, function(data) {
+			console.log('return data', data);
+			var image_url = data[0].assets.large_thumb.url;
+			photo = image_url;		
+		});
+	}
+
+
 	function checkFood(callback) {
 		var foodQuery = "/?food_name=" + foodName;
 		$.get('/api/food' + foodQuery, function(data) {
@@ -44,7 +63,7 @@ $(document).ready(function() {
 			foodID = data.id;
 			// callback goes to checkAlc function with food id
 			callback();
-			};
+			};	
 		});
 	}
 // GRABS FOOD PHOTO/DESCRIPTION IF NOT FOUND IN DB
@@ -65,9 +84,10 @@ $(document).ready(function() {
 // sends new food entry into food table
 	function postNewFood(callback) {
 		console.log('postNewFood func runs')
+		getShutterImg(foodName);
 		var newFood = {
 			food_name: foodName,
-			food_photo: foodPhoto,
+			food_photo: photo,
 			food_description: foodDesc
 		}
 		$.post('/api/food', newFood, function(data) {
@@ -112,10 +132,10 @@ $(document).ready(function() {
 	function postNewAlc(callback) {
 		console.log('postNewAlc runs');
 		// REPLACES MODAL WITH NEW ALC INPUTS
-
+		getShutterImg(alcName);
 		var newAlcohol = {
 			alc_name: alcName,
-			alc_photo: alcPhoto,
+			alc_photo: photo,
 			alc_description: alcDesc
 		}
 		console.log('newAlcohol after inputs', newAlcohol);
@@ -129,8 +149,8 @@ $(document).ready(function() {
 	}
 
 	function checkPairing(callback) {
-		var foodQuery = "/?food_id=" + foodID;
-		var alcQuery = "&alc_id=" + alcID;
+		var foodQuery = "/?food_id=" + foodID + "&food_name=" + foodName;
+		var alcQuery = "&alc_id=" + alcID + "&alc_name=" + alcName;
 		$.get('/api/pairing' + foodQuery + alcQuery, function(data) {
 			console.log("data: ", data);
 			// if the food is not found in the table it is created
