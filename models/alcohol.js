@@ -18,7 +18,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     alc_photo: {
       type: DataTypes.STRING
-    }`
+    }
   });
   return Alcohol;
 };
