@@ -74,6 +74,7 @@ module.exports = function(app) {
 	})
 
 	app.get("/api/pairs/food", function(req, res) {
+		console.log(req);
 		var food_id = req.query.food_id;
 		db.Pairing.findAll({
 			where: {
