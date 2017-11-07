@@ -161,8 +161,8 @@ $(document).ready(function() {
 	}
 
 	function checkPairing(callback) {
-		var foodQuery = "/?food_id=" + foodID + "&food_name=" + foodName;
-		var alcQuery = "&alc_id=" + alcID + "&alc_name=" + alcName;
+		var foodQuery = "/?food_id=" + foodID;
+		var alcQuery = "&alc_id=" + alcID;
 		$.get('/api/pairing' + foodQuery + alcQuery, function(data) {
 			console.log("data: ", data);
 			// if the food is not found in the table it is created
@@ -178,9 +178,11 @@ $(document).ready(function() {
 	}
 
 	function postNewPairing(callback) {
+		var pairName = foodName + " & " + alcName;
 		var newPairing = {
+			pair_name: pairName,
 			alc_id: alcID,
-			food_id: foodID,
+			food_id: foodID
 		};
 		$.post('/api/pairing', newPairing, function(data) {
 			pairID = data.id;
