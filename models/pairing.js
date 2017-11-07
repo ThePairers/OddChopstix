@@ -9,6 +9,13 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     },
+    pair_name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1]
+      }
+    },
     alc_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
