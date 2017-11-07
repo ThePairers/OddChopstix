@@ -128,13 +128,16 @@ $(document).ready(function() {
 				for (var i = 0; i < data.length; i++) {
 					var pair = {
 						pair_name: data[i].pair_name,
-						rating: ""
+						pair_id: data[i].id,
+						rating: "",
+						num_rates: ""
 					}
 					pairs.push(pair);
 				}
 			}
 		}).then(function() {
 			console.log(pairs);
+			calcRatings();
 		})
 	}
 	
@@ -148,12 +151,44 @@ $(document).ready(function() {
 				for (var i = 0; i < data.length; i++) {
 					var pair = {
 						pair_name: data[i].pair_name,
-						rating: ""
+						pair_id: data[i].id,
+						rating: "",
+						num_rates: ""
 					}
 					pairs.push(pair);
 				}
 			}
+		}).then(function() {
+			console.log(pairs);
+			calcRatings();
 		});
+	}
+
+	function calcRatings() {
+		var checked = 0;
+		for (var i = 0; i < pairs.length; i++) {
+			var pair_id = pairs[i].pair_id;
+			$.get('/api/ratings/?pair_id=' + pair_id, function(data) {
+				var sum = 0;
+				var counter = 0;		
+				for (var i = 0; i < data.length; i++) {
+					sum += data[i].rating;
+					counter++;
+					if (counter == data.length) {
+						var average = sum / counter;
+						var currentPair = counter -1;
+						pairs[currentPair].rating = average;
+						pairs[currentPair].num_rates = counter;
+						console.log(pairs[currentPair]);
+					}
+				}
+			}).then(function() {
+				checked++;
+				if (checked == pairs.length) {
+					console.log("pairs: ", pairs)
+				}
+			})
+		}
 	}
 
 });

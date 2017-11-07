@@ -97,4 +97,16 @@ module.exports = function(app) {
 			console.log(dbPost);
 		})
 	})
+
+	app.get('/api/ratings', function(req, res) {
+		var pair_id = req.query.pair_id;
+		db.Rating.findAll({
+			where: {
+				pair_id: pair_id
+			}
+		}).then(function(db) {
+			res.json(db);
+			console.log("ratings sent");
+		})
+	})
 };
