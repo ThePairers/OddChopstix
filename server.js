@@ -41,13 +41,14 @@ db.sequelize.sync({ force: false }).then(function() {
   });
 });
 
+/*
 var cloudinary = require("cloudinary");
-cloudinary.config({
-  cloud_name: 'oddchopstix',
-  api_key: '637332173612438',
-  api_secret: 'sSafHcfjsB-1v8FhJwWOweKGfMg'
+	cloudinary.config({
+	  cloud_name: 'oddchopstix',
+	  api_key: '637332173612438',
+	  api_secret: 'sSafHcfjsB-1v8FhJwWOweKGfMg'
 });
-
+*/
 
 
 
