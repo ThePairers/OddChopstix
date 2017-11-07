@@ -1,0 +1,304 @@
+<!-- ======================================== -->
+<!-- **************************************** -->
+<!-- NAV BAR SECTION ======================== -->
+<div class="pos-f-t">
+  <div class="collapse" id="navbarToggleExternalContent">
+    <div class="bg-inverse p-4">
+      <h4 class="text-white"></h4>
+      <span class="text-muted"></span>
+      <form class="form-inline">
+		
+	  <input class="form-control mr-sm-2" type="search" id="search-input" placeholder="Search"  aria-label="Search">
+  	<div class="form-check form-check-inline">
+  		<label class="form-check-label">
+    		<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="food"> Food
+  		</label>
+		</div>
+		<div class="form-check form-check-inline">
+		  <label class="form-check-label">
+		    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="alcohol"> Alcohol
+		  </label>
+		</div>
+		<div class="form-check form-check-inline">
+		  <label class="form-check-label">
+		    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="pairings"> Pairings
+		  </label>
+		</div>
+	    <button class="btn btn-outline-dark my-2 my-sm-0" id="search-btn">Search</button>
+
+	  </form>
+    </div>
+  </div>
+  <nav class="navbar navbar-inverse bg-inverse">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon glyphicon glyphicon-search" style="color: black;">
+      </span>
+    </button>
+  </nav>
+</div>
+</nav> -->
+ <!-- END NAV BAR -->
+<!-- ================================================ -->
+<!-- ************************************************ -->
+<div container="header">
+	<div class="jumbotron">
+		<h1 class="display-3" style="font-family: 'Abril Fatface', cursive;">🍜OddChopStix</h1>
+		  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+		  <hr class="my-4">
+		  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+	 <form class="form-inline">
+		<div class="form-check form-check-inlineco">
+		
+  			<label class="form-check-label">
+				<!-- Trigger the modal with a button -->
+				<div class="button-toolbar">
+				<button  type="button" class="btn btn-outline-dark my-2 my-sm-0" data-toggle="modal" data-target="#newFoodModal">
+					+🍔
+				</button>
+				
+				<button  type="button" class="btn btn-outline-dark my-2 my-sm-0" data-toggle="modal" data-target="#newAlcModal">
+					+🍸
+				</button>
+			
+				<button  type="button" class="btn btn-outline-dark my-2 my-sm-0" data-toggle="modal" data-target="#newPairingModal">
+					+💕
+				</button>
+				</div>
+  		</label>
+  		
+  	</div>
+  </form>
+	</div>	  <!-- Jumbotron end div -->
+</div>
+<!-- ================================================ -->
+	<br>
+	  <br>
+
+<!-- Food Carousel that displays the data from the food table -->
+<div id='food-carousel' class="carousel">
+	<h4>
+		Chow
+	</h4>
+	<div id="food-search" class="multiple-items">
+		<div class="image slick-slide slick-active">
+			<h5>
+				Caption
+			</h5>
+			<img src="images/ham.jpg">
+		</div>
+		<div class="image slick-slide slick-active">
+			<h5>
+				Burger
+			</h5>
+			<img src="images/jameson.jpg">
+		</div>
+		<div class="image slick-slide slick-active">
+			<h5>
+				Image Caption/Title
+			</h5>
+			<img src="images/ham.jpg">
+		</div>
+
+		<div class="image slick-slide slick-active">
+			<h5>
+				Caption
+			</h5>
+			<img src="images/jameson.jpg">
+		</div>
+
+	</div>
+</div>
+
+<!-- Alcohol Carousel that displays the data from the alcohol table -->
+<div id="alcohol-carousel" class="carousel">
+	<h4>
+		Booze
+	</h4>
+	<div id="alcohol-search" class="multiple-items">
+		<div class="image slick-slide slick-active">
+			<h5>
+				Caption
+			</h5>
+			<img src="images/ham.jpg">
+		</div>
+		<div class="image slick-slide slick-active">
+			<h5>
+				Caption
+			</h5>
+			<img src="images/jameson.jpg">
+		</div>
+		<div class="image slick-slide slick-active">
+			<h5>
+				Caption
+			</h5>
+			<img src="images/ham.jpg">
+		</div>
+		<div class="image slick-slide slick-active">
+			<h5>
+				Caption
+			</h5>
+			<img src="images/jameson.jpg">
+		</div>
+
+	</div>
+</div>
+<nav class="navbar fixed-bottom navbar-light bg-light">
+  <a class="navbar-brand" href="#">Fixed bottom</a>
+</nav>
+
+
+<!-- ======================================== -->
+<!-- **************************************** -->
+<!-- ======================================== -->
+<!-- POST INPUT MODAL -->
+	<div id="newPairingModal" class="modal fade" role="dialog">
+	  <div class="modal-dialog">
+	    <!-- Modal content-->
+	    <div class="modal-content-rating" id="modal-content-rating">
+	      <div class="modal-header">
+	        <h4 id="modal-title" class="modal-title" style="font-family: 'Abril Fatface', cursive; color: white; text-shadow: black 0.3em 0.3em 0.3em;">🍜OddChopStix</h4>
+	        <button type="button" class="close" data-dismiss="modal">&times;</button>
+	      </div>
+	      <div class="modal-body">
+					<form id='post-modal-form'>
+					  <div class="form-group post-modal-form-rows row">
+					    <label class="col-sm-2 col-form-label">Food</label>
+					    <div class="col-sm-10">
+					      <input class="form-control" id="food-input" placeholder="food">
+								<span id="foodReq"></span>
+					    </div>
+					  </div>
+					  <div class="form-group post-modal-form-rows row">
+					    <label class="col-sm-2 col-form-label">Alcohol</label>
+					    <div class="col-sm-10" style="margin-bottom:30px; font-size:8pt; color:red">
+					      <input class="form-control" id="alc-input" placeholder="Alcohol">
+					      <span id="alcReq"></span>
+					    </div>
+					  </div>
+					  <fieldset class="form-group post-modal-form-rows">
+					    <div class="row">
+					      <legend class="col-form-legend col-sm-2">Rating</legend>
+					      <div class="col-sm-10">
+					        <div class="form-check">
+					          <label class="form-check-label">
+					            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="1"> ★
+					          </label>
+					        </div>
+					        <div class="form-check">
+					          <label class="form-check-label">
+					            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="2">
+					            ★★
+					          </label>
+					        </div>
+					        <div class="form-check">
+					          <label class="form-check-label">
+					            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="3">
+					            ★★★
+					          </label>
+					        </div>
+					        <div class="form-check">
+					          <label class="form-check-label">
+					            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="4">
+					            ★★★★
+					          </label>
+					        </div>
+					        <div class="form-check">
+					          <label class="form-check-label">
+					            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="5">
+					            ★★★★★
+					          </label>
+					        </div>
+					      </div>
+					    </div>
+					    <!-- <div class="rating">
+							<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+						</div> -->
+					  </fieldset>
+					   <div class="form-group post-modal-form-rows row">
+					    <label for="review" class="col-sm-2 col-form-label">Review</label>
+					    <div class="col-sm-10">
+					      <textarea type="password" class="form-control" id="review-input" placeholder="What did you think?" text="Great!"></textarea>
+					  	</div>
+					  </div>
+					</form>
+		      <div id="post-modal-footer" class="modal-footer post-modal-form-rows">
+						<button id="rate-btn" class="btn btn-primary">Rate!</button>
+		        <button id="post-modal-close" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+	</div> <!-- ENDS POST INPUT FORM MODAL -->
+	<!-- POST INPUT MODAL -->
+	<div id="newFoodModal" class="modal fade" role="dialog">
+	  <div class="modal-dialog">
+	    <!-- Modal content-->
+	    <div class="modal-content-food" id=" modal-content-food">
+	      <div class="modal-header">
+	        <h4 id="modal-title-food" class="modal-title" style="font-family: 'Abril Fatface', cursive; color: white;text-shadow: black 0.3em 0.3em 0.3em;">🍜OddChopStix</h4>
+	        <button type="button" class="close" data-dismiss="modal">&times;</button>
+	      </div>
+	      <div class="modal-body">
+					<form id='photo-drop' method="post" action="/upload" class="dropzone">
+					  <div class="form-group post-modal-form-rows row">
+					    <label class="col-sm-2 col-form-label">Food</label>
+					    <div class="col-sm-10">
+					      <input class="form-control" id="food-input2" placeholder="food">
+								<span id="foodReq"></span>
+					    </div>
+					  </div>
+					  <div class="form-group post-modal-form-rows row">
+					    <label class="col-sm-2 col-form-label" id="dropzone">Pic</label>
+					    <div id="dropzone-area">
+					
+					    </div>
+					   
+					  </div>
+					</form>
+		      <div id="post-modal-footer" class="modal-footer post-modal-form-rows">
+						<button id="save-btn" class="btn btn-primary">Save</button>
+		        <button id="post-modal-close" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+	</div><!-- ENDS POST INPUT FORM MODAL -->
+	<!-- POST INPUT MODAL -->
+	<div id="newAlcModal" class="modal fade" role="dialog">
+	  <div class="modal-dialog">
+	    <!-- Modal content-->
+	    <div class="modal-content-alc">
+	      <div class="modal-header">
+	        <h4 id="modal-title-alcohol" class="modal-title" style="font-family: 'Abril Fatface', cursive; color: white; text-shadow: black 0.3em 0.3em 0.3em;">🍜OddChopStix</h4>
+	        <button type="button" class="close" data-dismiss="modal">&times;</button>
+	      </div>
+	      <div class="modal-body">
+					<form id="upload-widget" method="post" action="/upload" class="dropzone"> 
+					  <div class="form-group post-modal-form-rows row">
+					    <label class="col-sm-2 col-form-label">Drink</label>
+					    <div class="col-sm-10">
+					      <input class="form-control" id="alc-input" placeholder="food">
+								<span id="foodReq"></span>
+					    </div>
+					  </div>
+					  <div class="form-group post-modal-form-rows row">
+					    <label class="col-sm-2 col-form-label" id="dropzone">Pic</label>
+					    <div id="dropzone-area"></div>
+					   
+					  </div>
+					</form>
+		      <div id="post-modal-footer" class="modal-footer post-modal-form-rows">
+						<button id="alc-btn" class="btn btn-primary">Save</button>
+		        <button id="post-modal-close" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+	</div><!-- ENDS POST INPUT FORM MODAL -->
+
+<script type="text/javascript" src="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.min.js"></script>
+
+
+
+</body>
+</html>
