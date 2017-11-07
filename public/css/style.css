@@ -94,6 +94,14 @@
   margin-left: 0px;
 }
 
+.img-clicked {
+  border-color: blue;
+  border: solid;
+}
+
+.food-alc-pics {
+  margin: 5px;
+}
 /*
 .rating {
   unicode-bidi: bidi-override;
