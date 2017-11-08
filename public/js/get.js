@@ -72,8 +72,11 @@ $(document).ready(function() {
 	var showSearchModal = function() {
 		$('.example-modal-body').empty();
 		$('.example-modal-body').append($('<ul class="search-results-list">'))
+		console.log(pairs);
 		for (var i = 0; i < pairs.length; i++) {
-			$('.search-results-list').append($('<li>' + pairs[i].pair_name + '</li>'));
+			console.log(pairs[i].rating);
+			console.log(typeof pairs[i].num_rates);			
+			$('.search-results-list').append($('<li>' + pairs[i].pair_name + pairs[i].rating + pairs[i].num_rates + '</li>'));
 		};
 			$('#exampleModal').modal('show')
 
@@ -196,7 +199,6 @@ $(document).ready(function() {
       // callback goes to showSearchModal func
 			callback();
 			console.log(pairs);
-			calcRatings();
 		});
 	}
 
