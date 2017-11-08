@@ -1,7 +1,15 @@
+
+
+
 $(document).ready(function() {
 
 
+	var pairings;
+	var alcohols;
+	var food;
 	var pairs = [];
+	
+
 
 	// search query submit button
 	$('#search-btn').on('click', function(event) {
@@ -113,8 +121,16 @@ $(document).ready(function() {
 // })
 
 // Shows all foods in row on start 
+	function htmlPairDiv(){
+		pairings = [];
+		$.get('/api/pairs', function(data){
+			pairings = data;
+		});
+	}
+
 	var htmlFoodDiv = function() {
 		$.get('/api/foods', function(data) {
+			food = data;
 			for (var i = 0; i < data.length; i++) {
 				console.log("food data retrieved!");
 				var item = '<div class="image slick-slide slick-active" data-type="food" data-id="' + data[i].id + '"><h5>' + data[i].food_name + '</h5><img src="' + data[i].food_photo + '"></div>'
@@ -136,6 +152,7 @@ $(document).ready(function() {
 
 	htmlFoodDiv();
 	htmlAlcDiv();
+	
 
 	$('.slick-slider').on('click', '.slick-slide', function(e) {
 		e.preventDefault();
@@ -154,7 +171,10 @@ $(document).ready(function() {
 	});
 
 	function getFoodPairs(id) {
+
 		pairs = [];
+
+
 		var foodQuery = "/?food_id=" + id;
 		$.get('/api/pairs/food' + foodQuery, function(data) {
 			if (!data || data.length == 0) {
@@ -204,6 +224,7 @@ $(document).ready(function() {
 			//createTable();
 		});
 	}
+
 
 	function calcRatings(pair_id, index) {
 		$.get('/api/ratings/?pair_id=' + pair_id, function(data) {

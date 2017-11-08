@@ -15,6 +15,7 @@ module.exports = function(app) {
 // SEARCH WITH RADIO BUTTONS ROUTES ////////////////////////////
 // =============================================================
 // gets all foods with same name
+
 	app.get('/api/food/:food_name', function(req, res) {
 		db.Food.findAll({
 			where: {
@@ -56,6 +57,14 @@ module.exports = function(app) {
 // ===========================================================
 // DISPLAYS ALL FOOD/ALCOHOL/PAIRINGS IN ROWS ////////////////
 // -----------------------------------------------------------
+	app.get("/api/pairs", function(req, res){
+		db.Pairing.findAll({
+
+		}).then(function(dbPost) {
+			res.json(dbPost);
+			console.log(dbPost);
+		})
+	})
 
 	app.get("/api/foods", function(req, res) {
 		db.Food.findAll({
