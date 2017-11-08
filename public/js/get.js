@@ -183,7 +183,7 @@ $(document).ready(function() {
 				sum += data[i].rating;
 			}
 			var avgRating = sum / data.length;
-			var roundedAvgRating = Math.round(100 * roundedAvgRating)/100;
+			var roundedAvgRating = Math.round(100 * avgRating)/100;
 			pairs[index].rating = roundedAvgRating;
 			pairs[index].num_rates = data.length;
 		}).then(function() {
