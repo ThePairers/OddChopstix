@@ -100,6 +100,14 @@ $(document).ready(function() {
 // DISPLAYS FOOD/ALCH IN ROWS--------------------------- //
 // ///////////////////////////////////////////////////// //
 
+// $('image').on('click', function(e) {
+// 	e.preventDefault();
+// 	console.log('this image clicked');
+// 	var id = $(this).data('id');
+// 	console.log('id for image clicked: ', id);
+
+// })
+
 // Shows all foods in row on start 
 	var htmlFoodDiv = function() {
 		$.get('/api/foods', function(data) {
@@ -125,17 +133,18 @@ $(document).ready(function() {
 	htmlFoodDiv();
 	htmlAlcDiv();
 
-	$('.slick-slider').on('click', '.slick-slide', function() {
+	$('.slick-slider').on('click', '.slick-slide', function(e) {
+		e.preventDefault();
 		var dataID = $(this).attr("data-id");
 		var dataType = $(this).attr("data-type");
 		console.log(dataID);
 		console.log(dataType);
 		switch (dataType) {
 			case "food":
-				getFoodPairs(dataID);
+				getFoodPairs(dataID, showSearchModal);
 				break;
 			case "alc":
-				getAlcPairs(dataID);
+				getAlcPairs(dataID, showSearchModal);
 				break;
 		}
 	});
@@ -147,7 +156,6 @@ $(document).ready(function() {
 			if (!data) {
 				console.log("no pairs");
 			} else {
-				alert('getfoodpairs loop about to run');
 				for (var i = 0; i < data.length; i++) {
 					var pair = {
 						pair_name: data[i].pair_name,
@@ -188,7 +196,6 @@ $(document).ready(function() {
       // callback goes to showSearchModal func
 			callback();
 			console.log(pairs);
-      callback()
 			calcRatings();
 		});
 	}
