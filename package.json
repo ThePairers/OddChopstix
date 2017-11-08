@@ -23,5 +23,9 @@
     "sequelize": "^4.20.1",
     "shutterstock": "^0.13.0",
     "slick-carousel": "^1.8.1"
+  },
+  "engines": {
+    "node": "8.1.2",
+    "npm": "5.5.1"
   }
 }
