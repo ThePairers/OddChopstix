@@ -7,11 +7,8 @@ var shutter = shutterstock.v2({
 module.exports = function(app) {
 
 	app.get('/api/shutter/:query', function(req, res) {
-		console.log('app image search func runs shutterstock');
 		var query = String(req.params.query);
-		console.log('shutter query', query)
 		shutter.image.search(query, function(err, data) {
-			console.log('shutter res data', data)
 			res.json(data);
 		});
 	});
