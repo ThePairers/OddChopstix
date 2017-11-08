@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "root",
-    "password": "sqlpassword",
-    "database": "oddchopstix_db",
-    "host": "127.0.0.1",
+    "username": "bd43ee70f63757",
+    "password": "cecb7afe",
+    "database": "heroku_b1f1133837856fa",
+    "host": "us-cdbr-iron-east-05.cleardb.net",
     "dialect": "mysql"
   },
   "test": {
