@@ -8,7 +8,7 @@ $(document).ready(function() {
 	var alcID;
 	var alcName;
 	var alcPhoto;
-	var pairID; //create logic to generate pair name from food + alc
+	var pairID; 
 
 	// when newpairingmodal btn is clicked
 	$('#newPairingModalBtn').on('click', function(event) {
@@ -16,26 +16,20 @@ $(document).ready(function() {
 		$('.rating-stars').prop('checked', false);
 		$('#food-input').val('');
 		$('#alc-input').val('');
-		$('#review-input').val('');
 	})
 
 	$('#save-btn').on('click', function(event) {
 		event.preventDefault();
-		//cloudinary.v2.uploader.upload("../images/jameson.jpg", 
-    	//function(error, result) {console.log(result)});
 		foodName = $('#food-input2').val().trim();
-		
-		// newReview = $('#review-input').val().trim();
-		console.log("HI");
 		postNewFood(checkAlc);	
 	});
+
 	// when submit button is clicked at input
 	$('#rate-btn').on('click', function(event) {
 		event.preventDefault();
 		foodName = $('#food-input').val().trim();
 		alcName = $('#alc-input').val().trim();
 		rating = document.querySelector('[name="gridRadios"]:checked').value;
-		// newReview = $('#review-input').val().trim();
 		checkFood(checkAlc);	
 		$('#newPairingModal').modal('hide');
 	});
@@ -114,14 +108,14 @@ $(document).ready(function() {
 	}
 
 	function checkAlc(callback) {
-		console.log('checkAlc runs');
+		console.log('checkAlc runs')
 		var alcQuery = "/?alc_name=" + alcName;
 		$.get('/api/alcohol' + alcQuery, function(data) {
 			
 			// if the food is not found in the table it is created
 			// with postNewFood function
 			if (!data) {
-				newAlcInputs();
+				newAlcInputs(postNewAlc);
 			} else {
 			alcID = data.id;
 			// if success, goes to checkPairing
@@ -140,9 +134,7 @@ $(document).ready(function() {
 
 		$('#alc-submit-btn').on('click', function(event) {
 			event.stopImmediatePropagation();
-			event.preventDefault();			
-			alert('alc-submit-btn clicked');
-
+			event.preventDefault();
 			alcPhoto = $('.img-clicked').attr('src');
 		$('#newAlcModal').modal('hide');
 			postNewAlc(checkPairing);
@@ -178,13 +170,12 @@ $(document).ready(function() {
 			} else {
 			pairID = data.id;
 			// callback goes to postNewPairing
-				postNewRating();
+			postNewPairing(postNewRating);
 			};
 		});
 	}
 
 	function postNewPairing(callback) {
-		alert('postnewpairing fun runs');
 		var pairName = foodName + " & " + alcName;
 		var newPairing = {
 			pair_name: pairName,

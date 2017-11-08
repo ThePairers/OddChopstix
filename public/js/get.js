@@ -104,7 +104,7 @@ $(document).ready(function() {
 	var htmlFoodDiv = function() {
 		$.get('/api/foods', function(data) {
 			for (var i = 0; i < data.length; i++) {
-				console.log("food data: ", data);
+				console.log("food data retrieved!");
 				var item = '<div class="image slick-slide slick-active" data-toggle="modal" data-target="#exampleModal" data-type="food" data-id="' + data[i].id + '"><h5>' + data[i].food_name + '</h5><img src="' + data[i].food_photo + '"></div>'
 				$("#food-search").slick('slickAdd', item);
 			}
@@ -114,7 +114,7 @@ $(document).ready(function() {
 	var htmlAlcDiv = function() {
 		$.get('/api/alcs', function(data) {
 			alcohols = data;
-			console.log("alc data: ", data);
+			console.log("alc data retrieved!");
 			for (var i = 0; i < data.length; i++) {
 				var item = '<div class="image slick-slide slick-active" data-toggle="modal" data-target="#exampleModal" data-type="alc" data-id="' + data[i].id + '"><h5>' + data[i].alc_name + '</h5><img src="' + data[i].alc_photo + '"></div>'
 				$("#alcohol-search").slick('slickAdd', item);
@@ -141,23 +141,11 @@ $(document).ready(function() {
 	});
 
 	function getFoodPairs(id, callback) {
-// empty pairs array at start?
 		var foodQuery = "/?food_id=" + id;
-		$.get(('/api/pairs/food' + foodQuery), function(data) {
-					console.log(data);
-					console.log(alcohols);
-
-					// jQuery("<img/>").prependTo("#pairings-show-modal").attr({
-					//    src: alcohols[0].alc_photo,
-					//    alt: '',
-					//    height: '100px',
-					//    width: "100px"
-					// });
-
+		$.get('/api/pairs/food' + foodQuery, function(data) {
 			if (!data) {
 				console.log("no pairs");
 			} else {
-				console.log(data);
 				for (var i = 0; i < data.length; i++) {
 					var pair = {
 						pair_name: data[i].pair_name,
@@ -166,24 +154,22 @@ $(document).ready(function() {
 						num_rates: ""
 					}
 					pairs.push(pair);
+					calcRatings(data[i].id, i);
 				}
 			}
 		}).then(function() {
 			// callback goes to showSearchModal func
 			callback();
 			console.log(pairs);
-			calcRatings();
-		})
+		});
 	}
 	
 	function getAlcPairs(id, callback) {
 		var alcQuery = "/?alc_id=" + id;
-		console.log(alcQuery);
 		$.get('/api/pairs/alc' + alcQuery, function(data) {
 			if (!data) {
 				console.log("no pairs");
 			} else {
-				console.log(data);
 				for (var i = 0; i < data.length; i++) {
 					var pair = {
 						pair_name: data[i].pair_name,
@@ -192,41 +178,30 @@ $(document).ready(function() {
 						num_rates: ""
 					}
 					pairs.push(pair);
+					calcRatings(data[i].id, i);					
 				}
 			}
 		}).then(function() {
+      // callback goes to showSearchModal func
+			callback();
 			console.log(pairs);
-			// callback goes to showSearchModal func
       callback()
 			calcRatings();
 		});
 	}
 
-	function calcRatings() {
-		var checked = 0;
-		for (var i = 0; i < pairs.length; i++) {
-			var pair_id = pairs[i].pair_id;
-			$.get('/api/ratings/?pair_id=' + pair_id, function(data) {
-				var sum = 0;
-				var counter = 0;		
-				for (var i = 0; i < data.length; i++) {
-					sum += data[i].rating;
-					counter++;
-					if (counter == data.length) {
-						var average = sum / counter;
-						var currentPair = counter -1;
-						pairs[currentPair].rating = average;
-						pairs[currentPair].num_rates = counter;
-						console.log(pairs[currentPair]);
-					}
-				}
-			}).then(function() {
-				checked++;
-				if (checked == pairs.length) {
-					console.log("pairs: ", pairs)
-				}
-			})
-		}
+	function calcRatings(pair_id, index) {
+		$.get('/api/ratings/?pair_id=' + pair_id, function(data) {
+			var sum = 0;	
+			for (var i = 0; i < data.length; i++) {
+				sum += data[i].rating;
+			}
+			pairs[index].rating = sum / data.length;
+			pairs[index].num_rates = data.length;
+			console.log(pairs[index]);
+		}).then(function() {
+			console.log("calcRatings");			
+		});
 	}
 
 });
