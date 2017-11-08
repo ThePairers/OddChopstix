@@ -17,7 +17,6 @@ module.exports = function(app) {
 // gets all foods with same name
 
 	app.get('/api/food/:food_name', function(req, res) {
-		console.log(req);
 		db.Food.findAll({
 			where: {
 				food_name: req.params.food_name
@@ -84,6 +83,7 @@ module.exports = function(app) {
 	})
 
 	app.get("/api/pairs/food", function(req, res) {
+		console.log(req);
 		var food_id = req.query.food_id;
 		db.Pairing.findAll({
 			where: {
@@ -104,6 +104,18 @@ module.exports = function(app) {
 		}).then(function(dbPost) {
 			res.json(dbPost);
 			console.log(dbPost);
+		})
+	})
+
+	app.get('/api/ratings', function(req, res) {
+		var pair_id = req.query.pair_id;
+		db.Rating.findAll({
+			where: {
+				pair_id: pair_id
+			}
+		}).then(function(db) {
+			res.json(db);
+			console.log("ratings sent");
 		})
 	})
 };

@@ -5,12 +5,10 @@ $(document).ready(function() {
 	var foodID;
 	var foodName;
 	var foodPhoto;
-	var foodDesc;
 	var alcID;
 	var alcName;
 	var alcPhoto;
-	var alcDesc;
-	var pairID; //create logic to generate pair name from food + alc
+	var pairID; 
 
 	// when newpairingmodal btn is clicked
 	$('#newPairingModalBtn').on('click', function(event) {
@@ -18,78 +16,87 @@ $(document).ready(function() {
 		$('.rating-stars').prop('checked', false);
 		$('#food-input').val('');
 		$('#alc-input').val('');
-		$('#review-input').val('');
 	})
 
 	$('#save-btn').on('click', function(event) {
 		event.preventDefault();
-		//cloudinary.v2.uploader.upload("../images/jameson.jpg", 
-    	//function(error, result) {console.log(result)});
 		foodName = $('#food-input2').val().trim();
-		
-		// newReview = $('#review-input').val().trim();
-		console.log("HI");
 		postNewFood(checkAlc);	
 	});
+
 	// when submit button is clicked at input
 	$('#rate-btn').on('click', function(event) {
 		event.preventDefault();
 		foodName = $('#food-input').val().trim();
 		alcName = $('#alc-input').val().trim();
 		rating = document.querySelector('[name="gridRadios"]:checked').value;
-		newReview = $('#review-input').val().trim();
 		checkFood(checkAlc);	
+		$('#newPairingModal').modal('hide');
 	});
 
 	function getShutterImg(query) {
-		console.log('getshutterimg query runs');
+		console.log('getshutterimg query runs, query: ', query);
 		$.get('/api/shutter/' + query, function(data) {
+			console.log('api get shutter get actually runs');
 			console.log('return data', data);
-			var image_url = data[0].assets.large_thumb.url;
-			photo = image_url;		
+
+			for (var i = 0; i < 5; i++) {
+				var image = data.data[i].assets.large_thumb.url;
+				$('.img-zone').append($("<img class='food-alc-pics' src='" + image + "'>"));
+			}
+			$('.food-alc-pics').on('click', function(e) {
+				e.preventDefault();
+				$('.food-alc-pics').removeClass('img-clicked');
+				$(this).addClass('img-clicked');
+			})
+			// var image_url = data.data[0].assets.large_thumb.url;
+			// photo = image_url;
 		});
 	}
 
-
-	function checkFood(callback) {
+	function checkFood() {
 		var foodQuery = "/?food_name=" + foodName;
 		$.get('/api/food' + foodQuery, function(data) {
 			
 			// if the food is not found in the table it is created
 			// with postNewFood function
 			if (!data) {
-				newFoodInputs(postNewFood);
+				newFoodInputs();
 			} else {
 			foodID = data.id;
 			// callback goes to checkAlc function with food id
-			callback();
+			checkAlc();
 			};	
 		});
-	}
+	};
+
 // GRABS FOOD PHOTO/DESCRIPTION IF NOT FOUND IN DB
-	function newFoodInputs(callback) {
-		// empties modal and puts new inputs with flags based on paramter
-		emptyAppendModalInputs('food');
+	function newFoodInputs() {
+
+		$('.img-zone').empty();
+
+		getShutterImg(foodName);
+		$('#newFoodModal').modal('show');
 
 		$('#food-submit-btn').on('click', function(event) {
+			event.stopImmediatePropagation();
 			event.preventDefault();
-			foodPhoto = $('#food-photo-input').val().trim();
-			foodDesc = $('#food-desc-input').val().trim();
-
-// callback goes to postNewFood func after updating foodphoto and foodDesc variables.
+			foodPhoto = $('.img-clicked').attr('src');
+			console.log(foodPhoto);
+		$('#newFoodModal').modal('hide');
+			postNewFood();
 		})
-		callback();
+
 	};
 
 // sends new food entry into food table
 	function postNewFood(callback) {
 		console.log('postNewFood func runs')
-		getShutterImg(foodName);
 		var newFood = {
 			food_name: foodName,
-			food_photo: photo,
-			food_description: foodDesc
+			food_photo: foodPhoto
 		}
+		console.log('newFood object', newFood);
 		$.post('/api/food', newFood, function(data) {
 			console.log('post new food, return data: ', data);
 			console.log(data.id);
@@ -119,24 +126,27 @@ $(document).ready(function() {
 
 	function newAlcInputs(callback) {
 		console.log('newAlcInputs runs');
-		emptyAppendModalInputs('alc');
-		$('#alc-submit-btn').on('click', function(event) {
-			event.preventDefault();
-			alcPhoto = $('#alc-photo-input').val().trim();
-			alcDesc = $('#alc-desc-input').val().trim();
 
+		$('.img-zone').empty();
+
+		getShutterImg(alcName);
+		$('#newAlcModal').modal('show');
+
+		$('#alc-submit-btn').on('click', function(event) {
+			event.stopImmediatePropagation();
+			event.preventDefault();
+			alcPhoto = $('.img-clicked').attr('src');
+		$('#newAlcModal').modal('hide');
 			postNewAlc(checkPairing);
 		})
 	};
 
 	function postNewAlc(callback) {
 		console.log('postNewAlc runs');
-		// REPLACES MODAL WITH NEW ALC INPUTS
-		getShutterImg(alcName);
+
 		var newAlcohol = {
 			alc_name: alcName,
-			alc_photo: photo,
-			alc_description: alcDesc
+			alc_photo: alcPhoto,
 		}
 		console.log('newAlcohol after inputs', newAlcohol);
 		$.post('/api/alcohol', newAlcohol, function(data) {
@@ -149,8 +159,8 @@ $(document).ready(function() {
 	}
 
 	function checkPairing(callback) {
-		var foodQuery = "/?food_id=" + foodID + "&food_name=" + foodName;
-		var alcQuery = "&alc_id=" + alcID + "&alc_name=" + alcName;
+		var foodQuery = "/?food_id=" + foodID;
+		var alcQuery = "&alc_id=" + alcID;
 		$.get('/api/pairing' + foodQuery + alcQuery, function(data) {
 			console.log("data: ", data);
 			// if the food is not found in the table it is created
@@ -166,15 +176,18 @@ $(document).ready(function() {
 	}
 
 	function postNewPairing(callback) {
+		var pairName = foodName + " & " + alcName;
 		var newPairing = {
+			pair_name: pairName,
 			alc_id: alcID,
-			food_id: foodID,
+			food_id: foodID
 		};
 		$.post('/api/pairing', newPairing, function(data) {
 			pairID = data.id;
+			callback();
 		});
 	// callback goes to postNewRating func
-		callback();
+
 	};
 
 	function postNewRating() {
@@ -186,29 +199,29 @@ $(document).ready(function() {
 		$.post('/api/rating', newRating, function(data) {
 			console.log(data);
 		});
-		postSuccessModal();
+		// postSuccessModal();
 	}
 
 // EMPTIES POST MODAL THEN ADDS INPUT DEPENDING ON FOOD/ALC PARAMATER
-	function emptyAppendModalInputs(replace) {
-		$('#post-modal-form').empty();
-		$('#post-modal-footer').empty();
-		$('#modal-title').html('Additional Info <p>We did not find your ' + replace + ' in our database, please provide additional details');
-		var $div = $('<div class="form-group post-modal-form-rows row">')
-									.append('<label class="col-sm-2 col-form-label">Add Photo')
-									.append('<div class="col-sm-10"> <input class="form-control" id="'+ replace +'-photo-input" placeholder="Photo" value="photo.jpg">')
-									.append('<label class="col-sm-2 col-form-label">Description')
-									.append('<div class="col-sm-10"> <input class="form-control" id="'+ replace + '-desc-input" placeholder="Describe it!" value="blahblah description">');
-		$('#post-modal-form').append($div);
-		var $footer = $('<button id="'+ replace + '-submit-btn" class="btn btn-primary">Submit</button> <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>');
-		$('#post-modal-footer').append($footer);
-	}
+	// function emptyAppendModalInputs(replace) {
+	// 	$('#post-modal-form').empty();
+	// 	$('#post-modal-footer').empty();
+	// 	$('#modal-title').html('Additional Info <p>We did not find your ' + replace + ' in our database, please provide additional details');
+	// 	var $div = $('<div class="form-group post-modal-form-rows row">')
+	// 								.append('<label class="col-sm-2 col-form-label">Add Photo')
+	// 								.append('<div class="col-sm-10"> <input class="form-control" id="'+ replace +'-photo-input" placeholder="Photo" value="photo.jpg">')
+	// 								.append('<label class="col-sm-2 col-form-label">Description')
+	// 								.append('<div class="col-sm-10"> <input class="form-control" id="'+ replace + '-desc-input" placeholder="Describe it!" value="blahblah description">');
+	// 	$('#post-modal-form').append($div);
+	// 	var $footer = $('<button id="'+ replace + '-submit-btn" class="btn btn-primary">Submit</button> <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>');
+	// 	$('#post-modal-footer').append($footer);
+	// }
 
-	function postSuccessModal() {
-		$('#post-modal-form').empty();
-		$('#post-modal-footer').empty();
-		$('#modal-title').empty();
-		$('#post-modal-form').html('YOUR POST HAS BEEN SUCCESSFULLY POSTED');
-		$('#post-modal-footer').append('<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>')
-	}
+	// function postSuccessModal() {
+	// 	$('#post-modal-form').empty();
+	// 	$('#post-modal-footer').empty();
+	// 	$('#modal-title').empty();
+	// 	$('#post-modal-form').html('YOUR POST HAS BEEN SUCCESSFULLY POSTED');
+	// 	$('#post-modal-footer').append('<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>')
+	// }
 });

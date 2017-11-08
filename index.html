@@ -27,10 +27,7 @@
 	<!-- slick js -->
 
 
-	<!-- js dropzone  -->
-	<!-- <script type="text/javascript". src="./js/dropzone.js"></script> -->
-	<!-- js photo -->
-	<!-- <script type="text/javascript" src="./js/photodrop.js"></script> -->
+	
 	<!-- js post new -->
 	<script type="text/javascript" src="./js/post.js"></script>
 	<!-- js open/do stuff to html -->
@@ -59,12 +56,12 @@
 	  <input class="form-control mr-sm-2" type="search" id="search-input" placeholder="Search"  aria-label="Search">
   	<div class="form-check form-check-inline">
   		<label class="form-check-label">
-    		<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="food"> Food
+    		<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Food"> Food
   		</label>
 		</div>
 		<div class="form-check form-check-inline">
 		  <label class="form-check-label">
-		    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="alcohol"> Alcohol
+		    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Alcohol"> Alcohol
 		  </label>
 		</div>
 
@@ -94,8 +91,8 @@
 		  <hr class="my-4">
 		  <p></p>
 	
-	<div class="card">
-  <div class="card-body">
+	
+ 
  
 	 <form class="form-inline">
 		<div class="form-check form-check-inlineco">
@@ -103,15 +100,7 @@
   			<label class="form-check-label">
 				<!-- Trigger the modal with a button -->
 				<div class="button-toolbar">
-				<button  type="button" class="btn btn-outline-dark my-2 my-sm-0" data-toggle="modal" data-target="#newFoodModal">
-					+ FOOD
-				</button>
-				
-				<button  type="button" class="btn btn-outline-dark my-2 my-sm-0" data-toggle="modal" data-target="#newAlcModal">
-					+ DRINK
-				</button>
 
-				<button  type="button" class="btn btn-outline-dark my-2 my-sm-0" data-toggle="modal" data-target="#newPairingModal">
 				<button id="newPairingModalBtn" type="button" class="btn btn-outline-dark my-2 my-sm-0" data-toggle="modal" data-target="#newPairingModal">
 					+ PAIRING
 
@@ -119,7 +108,7 @@
 				</div>
   		</label>
   		
-  	</div>
+  	
   </form>
    </div>
 </div>
@@ -135,7 +124,7 @@
 	</h4>
 	<div id="food-search" class="multiple-items">
 
-		<div class="image slick-slide slick-active">
+		<!-- <div class="image slick-slide slick-active">
 			<h5 class>
 				Caption
 			</h5>
@@ -147,7 +136,7 @@
 			</h5>
 			<img src="images/jameson.jpg">
 		</div>
-		<div class="image slick-slide slick-active">
+		<div class="image slick-slide slick-active" >
 			<h5>
 				Image Caption/Title
 			</h5>
@@ -159,7 +148,7 @@
 				Caption
 			</h5>
 			<img src="images/jameson.jpg">
-		</div>
+		</div> -->
 
 
 	</div>
@@ -171,6 +160,31 @@
 		Drinks
 	</h4>
 	<div id="alcohol-search" class="multiple-items">
+		<!-- <div class="image slick-slide slick-active">
+			<h5 class>
+				Caption
+			</h5>
+			<img src="images/drink.svg">
+		</div>
+		<div class="image slick-slide slick-active" data-toggle="modal" data-target="#exampleModal">
+			<h5>
+				Burger
+			</h5>
+			<img src="images/drink.svg">
+		</div>
+		<div class="image slick-slide slick-active" data-toggle="modal" data-target="#exampleModal">
+			<h5>
+				Image Caption/Title
+			</h5>
+			<img src="images/drink.svg">
+		</div>
+
+		<div class="image slick-slide slick-active" data-toggle="modal" data-target="#exampleModal">
+			<h5>
+				Caption
+			</h5>
+			<img src="images/drink.svg">
+		</div> -->
 
 	</div>
 	</div>
@@ -190,24 +204,25 @@
 	      <div class="modal-body">
 					<form id='post-modal-form'>
 					  <div class="form-group post-modal-form-rows row">
-					    <label class="col-sm-2 col-form-label">Food</label>
+					    <label class="col-sm-2 col-form-label">FOOD</label>
 					    <div class="col-sm-10">
-					      <input class="form-control" id="food-input" placeholder="food">
+					      <input class="form-control" id="food-input" placeholder="Food">
 								<span id="foodReq"></span>
 					    </div>
 					  </div>
 					  <div class="form-group post-modal-form-rows row">
-					    <label class="col-sm-2 col-form-label">Alcohol</label>
+					    <label class="col-sm-2 col-form-label">DRINK</label>
 					    <div class="col-sm-10" style="margin-bottom:30px; font-size:8pt; color:red">
 					      <input class="form-control" id="alc-input" placeholder="Alcohol">
 					      <span id="alcReq"></span>
 					    </div>
 					  </div>
+
 					  <fieldset class="form-group post-modal-form-rows">
 					    <div class="row">
-					      <legend class="col-form-legend col-sm-2">Rating</legend>
+					      <legend class="col-form-legend col-sm-2">RATING</legend>
 					      <div class="col-sm-10">
-					        <div class="form-check">
+					        <div class="form-check form-check-inline" >
 					          <label class="form-check-label">
 					            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="1"> ★
 					          </label>
@@ -238,16 +253,8 @@
 					        </div>
 					      </div>
 					    </div>
-					    <!-- <div class="rating">
-							<span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-						</div> -->
 					  </fieldset>
-					   <div class="form-group post-modal-form-rows row">
-					    <label for="review" class="col-sm-2 col-form-label">Review</label>
-					    <div class="col-sm-10">
-					      <textarea type="password" class="form-control" id="review-input" placeholder="What did you think?" text="Great!"></textarea>
-					  	</div>
-					  </div>
+					
 					</form>
 		      <div id="post-modal-footer" class="modal-footer post-modal-form-rows">
 						<button id="rate-btn" class="btn btn-primary">Rate!</button>
@@ -263,28 +270,23 @@
 	    <!-- Modal content-->
 	    <div class="modal-content modal-content-food" id=" modal-content-food">
 	      <div class="modal-header">
-	        <h4 id="modal-title-food" class="modal-title">🍜OddChopStix</h4>
+	        <h4 id="modal-title-food" class="modal-title" style="font-family: 'Abril Fatface', cursive;">🍜OddChopStix</h4>
 	        <button type="button" class="close" data-dismiss="modal">&times;</button>
 	      </div>
 	      <div class="modal-body">
-					<form id='photo-drop' method="post" action="/upload" class="dropzone">
+					<form id='photo-drop'>
+					  
+					  <h5>Please pick one</h5>
 					  <div class="form-group post-modal-form-rows row">
-					    <label class="col-sm-2 col-form-label">Food</label>
-					    <div class="col-sm-10">
-					      <input class="form-control" id="food-input2" placeholder="food">
-								<span id="foodReq"></span>
-					    </div>
-					  </div>
-					  <div class="form-group post-modal-form-rows row">
-					    <label class="col-sm-2 col-form-label" id="dropzone">Pic</label>
-					    <div id="dropzone-area">
+					    <label class="col-sm-2 col-form-label"></label>
+					    <div class="img-zone">
 					
 					    </div>
 					   
 					  </div>
 					</form>
 		      <div id="post-modal-footer" class="modal-footer post-modal-form-rows">
-						<button id="save-btn" class="btn btn-primary">Save</button>
+						<button id="food-submit-btn" class="btn btn-primary">Save</button>
 		        <button id="post-modal-close" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 		      </div>
 		    </div>
@@ -297,32 +299,86 @@
 	    <!-- Modal content-->
 	    <div class="modal-content modal-content-alc">
 	      <div class="modal-header">
-	        <h4 id="modal-title-alcohol" class="modal-title">🍜OddChopStix</h4>
+	        <h4 id="modal-title-alcohol" class="modal-title"
+	        style="font-family: 'Abril Fatface', cursive;">🍜OddChopStix</h4>
 	        <button type="button" class="close" data-dismiss="modal">&times;</button>
 	      </div>
 	      <div class="modal-body">
-					<form id="upload-widget" method="post" action="/upload" class="dropzone"> 
+					<form> 
+					  
+					  <h5>Please pick one</h5>
 					  <div class="form-group post-modal-form-rows row">
-					    <label class="col-sm-2 col-form-label">Drink</label>
-					    <div class="col-sm-10">
-					      <input class="form-control" id="alc-input" placeholder="food">
-								<span id="foodReq"></span>
-					    </div>
-					  </div>
-					  <div class="form-group post-modal-form-rows row">
-					    <label class="col-sm-2 col-form-label" id="dropzone">Pic</label>
-					    <div id="dropzone-area"></div>
+					    <label class="col-sm-2 col-form-label"></label>
+					    <div class="img-zone"></div>
 					   
 					  </div>
 					</form>
 		      <div id="post-modal-footer" class="modal-footer post-modal-form-rows">
-						<button id="alc-btn" class="btn btn-primary">Save</button>
+						<button id="alc-submit-btn" class="btn btn-primary">Save</button>
 		        <button id="post-modal-close" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 		      </div>
 		    </div>
 		  </div>
 		</div>
 	</div><!-- ENDS POST INPUT FORM MODAL -->
+
+
+<!-- Starts GET Pairing MODAL -->
+
+<!-- Modal -->
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content modal-content-pairing">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ModalLabel" style="font-family: 'Abril Fatface', cursive;">🍜OddChopStix</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body example-modal-body" id="pairings-show-modal">
+       <table style="width:100%">
+       		<thead>
+	            <tr>
+	              <th>Name of Pair</th>
+	              <th>Average Rating</th>
+	              <th>Number of Ratings</th>
+          		</tr>
+      		</thead>
+      		<tbody id="table-body">
+      		</tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<!-- Ends GET Pairing MODAL -->
+
+<!-- sticky footer -->
+<nav class="navbar navbar-light bg-inverse" id="fixed-bottom">
+     <div class="container">
+        <div class="row">
+          <div class="col l6 s8">
+             
+              <ul style="list-style: none; color: white">
+              	 <h5 class="white-text">Made by the Pairers:</h5>
+                <li><img src="./images/icon_github.png"><a class="white-text text-lighten-3" href="https://github.com/jtung23"> Jonathon Tung</a></li>
+                <li><img src="./images/icon_github.png"><a class="white-text text-lighten-3" href="https://github.com/boatstorage">  Marina Lyulko</a></li>
+                <li><img src="./images/icon_github.png""><a class="white-text text-lighten-3" href="https://github.com/kevdawg21">  Kevin Yin</a></li>
+                <p>© 2017 Copyright</p>
+              </ul>
+              
+            </div>
+          </div>
+        </div>
+</nav>
+<!-- ends sticky footer -->
 
 <script type="text/javascript" src="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.min.js"></script>
 </div>
