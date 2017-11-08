@@ -33,7 +33,7 @@ require("./routes/api-get-routes.js")(app);
 // require("./routes/dropzone-routes.js")(app);
 require("./routes/shutterstock-routes.js")(app);
 
-var sequelizeHeroku = require('../index').connect();
+var sequelizeHeroku = require('sequelize-heroku').connect();
 
 if (sequelizeHeroku)
 {
