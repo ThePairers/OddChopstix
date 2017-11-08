@@ -73,8 +73,11 @@ $(document).ready(function() {
 	var showSearchModal = function() {
 		$('.example-modal-body').empty();
 		$('.example-modal-body').append($('<ul class="search-results-list">'))
+		console.log(pairs);
 		for (var i = 0; i < pairs.length; i++) {
-			$('.search-results-list').append($('<li>' + pairs[i].pair_name + '</li>'));
+			console.log(pairs[i].rating);
+			console.log(typeof pairs[i].num_rates);			
+			$('.search-results-list').append($('<li>' + pairs[i].pair_name + pairs[i].rating + pairs[i].num_rates + '</li>'));
 		};
 			$('#exampleModal').modal('show')
 
@@ -101,6 +104,14 @@ $(document).ready(function() {
 // DISPLAYS FOOD/ALCH IN ROWS--------------------------- //
 // ///////////////////////////////////////////////////// //
 
+// $('image').on('click', function(e) {
+// 	e.preventDefault();
+// 	console.log('this image clicked');
+// 	var id = $(this).data('id');
+// 	console.log('id for image clicked: ', id);
+
+// })
+
 // Shows all foods in row on start 
 	var htmlFoodDiv = function() {
 		$.get('/api/foods', function(data) {
@@ -126,17 +137,18 @@ $(document).ready(function() {
 	htmlFoodDiv();
 	htmlAlcDiv();
 
-	$('.slick-slider').on('click', '.slick-slide', function() {
+	$('.slick-slider').on('click', '.slick-slide', function(e) {
+		e.preventDefault();
 		var dataID = $(this).attr("data-id");
 		var dataType = $(this).attr("data-type");
 		console.log(dataID);
 		console.log(dataType);
 		switch (dataType) {
 			case "food":
-				getFoodPairs(dataID);
+				getFoodPairs(dataID, showSearchModal);
 				break;
 			case "alc":
-				getAlcPairs(dataID);
+				getAlcPairs(dataID, showSearchModal);
 				break;
 		}
 	});
