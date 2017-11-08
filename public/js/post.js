@@ -16,7 +16,6 @@ $(document).ready(function() {
 		$('.rating-stars').prop('checked', false);
 		$('#food-input').val('');
 		$('#alc-input').val('');
-		$('#review-input').val('');
 	})
 
 	$('#save-btn').on('click', function(event) {
@@ -31,7 +30,6 @@ $(document).ready(function() {
 		foodName = $('#food-input').val().trim();
 		alcName = $('#alc-input').val().trim();
 		rating = document.querySelector('[name="gridRadios"]:checked').value;
-		newReview = $('#review-input').val().trim();
 		checkFood(checkAlc);	
 		$('#newPairingModal').modal('hide');
 	});
