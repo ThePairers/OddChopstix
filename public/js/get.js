@@ -1,5 +1,16 @@
+
+<<<<<<< Updated upstream
+=======
+
 $(document).ready(function() {
 
+	var pairings;
+	var alcohols;
+	var food;
+	var pairs = [];
+	
+
+>>>>>>> Stashed changes
 	// search query submit button
 	$('#search-btn').on('click', function(event) {
 		event.preventDefault();
@@ -78,8 +89,16 @@ $(document).ready(function() {
 // ///////////////////////////////////////////////////// //
 
 // Shows all foods in row on start 
+	function htmlPairDiv(){
+		pairings = [];
+		$.get('/api/pairs', function(data){
+			pairings = data;
+		});
+	}
+
 	var htmlFoodDiv = function() {
 		$.get('/api/foods', function(data) {
+			food = data;
 			for (var i = 0; i < data.length; i++) {
 				console.log("food data: ", data);
 				var item = '<div class="image slick-slide slick-active" data-type="food" data-id="' + data[i].id + '"><h5>' + data[i].food_name + '</h5><img src="' + data[i].food_photo + '"></div>'
@@ -100,6 +119,7 @@ $(document).ready(function() {
 
 	htmlFoodDiv();
 	htmlAlcDiv();
+	
 
 	$('.slick-slider').on('click', '.slick-slide', function() {
 		var dataID = $(this).attr("data-id");
@@ -108,10 +128,19 @@ $(document).ready(function() {
 		console.log(dataType);
 		switch (dataType) {
 			case "food":
+<<<<<<< Updated upstream
 				getFoodPairs(dataID);
 				break;
 			case "alc":
 				getAlcPairs(dataID);
+=======
+				getFoodPairs(dataID, showSearchModal);
+				htmlPairDiv();
+				break;
+			case "alc":
+				getAlcPairs(dataID, showSearchModal);
+				htmlPairDiv();
+>>>>>>> Stashed changes
 				break;
 		}
 	});
@@ -119,6 +148,11 @@ $(document).ready(function() {
 	var pairs = [];
 
 	function getFoodPairs(id) {
+<<<<<<< Updated upstream
+=======
+		pairs = [];
+
+>>>>>>> Stashed changes
 		var foodQuery = "/?food_id=" + id;
 		$.get('/api/pairs/food' + foodQuery, function(data) {
 			if (!data) {
@@ -156,4 +190,50 @@ $(document).ready(function() {
 		});
 	}
 
+<<<<<<< Updated upstream
+=======
+	function calcRatings(pair_id, index) {
+		$.get('/api/ratings/?pair_id=' + pair_id, function(data) {
+		
+			var sum = 0;	
+			for (var i = 0; i < data.length; i++) {
+				sum += data[i].rating;
+			}
+			pairs[index].rating = sum / data.length;
+			pairs[index].num_rates = data.length;
+			console.log(pairs[index]);
+		}).then(function() {
+			console.log("calcRatings");	
+			if (index + 1 == pairs.length) {
+				createTable();	
+			}
+			
+		});
+	}
+
+	function createTable() {
+		console.log("createTable");
+		console.log(pairs);
+		var tableRows = [];
+		for (var i = 0; i < pairs.length; i++) {
+			var field1 = '<td>' + pairs[i].pair_name + '</td>';
+			var field2 = '<td>' + pairs[i].rating + '</td>';
+			var field3 = '<td>' + pairs[i].num_rates + '</td>';
+		// 	for (var j = 0; j < data.length; j++) {
+		// 	var field4 = '<td>' + data[i].alc_photo + data[i].food_photo + '</td>';
+		// }	
+			var tableData = field1 + field2 + field3;
+			var row = '<tr>' + tableData + '</tr>';
+			tableRows.push(row);
+		} 
+		console.log(tableRows);
+		$("#table-body").append(tableRows);
+		$('#exampleModal').modal('show')
+	}
+
+	$(".modal").on("hidden.bs.modal", function(){
+    	$(".example-modal-body").html('<table style="width:100%"><thead><tr><th>Name of Pair</th><th>Average Rating</th><th>Number of Ratings</th></tr></thead><tbody id="table-body"></tbody></table>');
+	});
+
+>>>>>>> Stashed changes
 });
