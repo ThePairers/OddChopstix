@@ -16,10 +16,10 @@ $(document).ready(function() {
 		$('.search-modal-body').empty();
 		// Depending on which radio button is clicked, will query all matching food/alch/pairing names
 		switch (radioButtons) {
-			case 'food':
+			case 'Food':
 				getFoods(searchQuery);
 				break;
-			case 'alcohol':
+			case 'Alcohol':
 				getAlcohols(searchQuery);
 				break;
 			default:
@@ -46,6 +46,7 @@ $(document).ready(function() {
 			}
 		});
 	};
+
 	// grabs all matching alch from alcohol table
 	// search button clicked, gets id of food/alch in indiv table.
 	// serach pairing table that matches the id
@@ -69,11 +70,12 @@ $(document).ready(function() {
 	};
 
 	var showSearchModal = function() {
-		$('.search-modal-body').empty();
+		$('.example-modal-body').empty();
+		$('.example-modal-body').append($('<ul class="search-results-list">'))
 		for (var i = 0; i < pairs.length; i++) {
-			$('.search-modal-body').append(pairs[i].pair_name);
+			$('.search-results-list').append($('<li>' + pairs[i].pair_name + '</li>'));
 		};
-			$('#searchModal').modal('show')
+			$('#exampleModal').modal('show')
 
 	}
 
