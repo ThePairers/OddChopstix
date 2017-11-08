@@ -11,6 +11,12 @@ $('.multiple-items').slick({
   nextArrow: nextArrow
 });
 
+$('#exampleModal').on('hidden.bs.modal', function (e) {
+	e.preventDefault();
+	$('.example-modal-body').empty();
+})
+
+
 });
 
 

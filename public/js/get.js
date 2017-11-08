@@ -13,7 +13,7 @@ $(document).ready(function() {
 
 		var radioButtons = document.querySelector('[name="inlineRadioOptions"]:checked').value;
 		console.log('radioButtons', radioButtons);		
-		$('.search-modal-body').empty();
+		$('.example-modal-body').empty();
 		// Depending on which radio button is clicked, will query all matching food/alch/pairing names
 		switch (radioButtons) {
 			case 'Food':
@@ -158,6 +158,7 @@ $(document).ready(function() {
 				}
 			}
 		}).then(function() {
+			// callback goes to showSearchModal func
 			callback();
 			console.log(pairs);
 		});
@@ -181,8 +182,11 @@ $(document).ready(function() {
 				}
 			}
 		}).then(function() {
+      // callback goes to showSearchModal func
 			callback();
 			console.log(pairs);
+      callback()
+			calcRatings();
 		});
 	}
 
