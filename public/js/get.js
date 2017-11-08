@@ -141,11 +141,13 @@ $(document).ready(function() {
 	});
 
 	function getFoodPairs(id, callback) {
+		pairs = [];
 		var foodQuery = "/?food_id=" + id;
 		$.get('/api/pairs/food' + foodQuery, function(data) {
 			if (!data) {
 				console.log("no pairs");
 			} else {
+				alert('getfoodpairs loop about to run');
 				for (var i = 0; i < data.length; i++) {
 					var pair = {
 						pair_name: data[i].pair_name,
@@ -165,6 +167,7 @@ $(document).ready(function() {
 	}
 	
 	function getAlcPairs(id, callback) {
+		pairs = [];
 		var alcQuery = "/?alc_id=" + id;
 		$.get('/api/pairs/alc' + alcQuery, function(data) {
 			if (!data) {
