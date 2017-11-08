@@ -44,6 +44,8 @@ $(document).ready(function() {
 
 				console.log('results found')
 			}
+		}).then(function() {
+			createTable();
 		});
 	};
 
@@ -66,6 +68,8 @@ $(document).ready(function() {
 
 				console.log('results found')
 			}
+		}).then(function() {
+			createTable();
 		});
 	};
 
@@ -147,7 +151,6 @@ $(document).ready(function() {
 			if (!data) {
 				console.log("no pairs");
 			} else {
-				alert('getfoodpairs loop about to run');
 				for (var i = 0; i < data.length; i++) {
 					var pair = {
 						pair_name: data[i].pair_name,
@@ -163,6 +166,7 @@ $(document).ready(function() {
 			// callback goes to showSearchModal func
 			callback();
 			console.log(pairs);
+			//createTable();	
 		});
 	}
 	
@@ -188,8 +192,7 @@ $(document).ready(function() {
       // callback goes to showSearchModal func
 			callback();
 			console.log(pairs);
-      callback()
-			calcRatings();
+			//createTable();
 		});
 	}
 
@@ -203,8 +206,23 @@ $(document).ready(function() {
 			pairs[index].num_rates = data.length;
 			console.log(pairs[index]);
 		}).then(function() {
-			console.log("calcRatings");			
+			console.log("calcRatings");	
+			createTable();	
 		});
+	}
+
+	function createTable() {
+		console.log("createTable");
+		var tableRows = [];
+		for (var i = 0; i < pairs.length; i++) {
+			var row = '<tr>' + tableData + '</tr>';
+			var tableData = field1 + field2 + field3;
+			var field1 = '<td>' + pairs[i].pair_name + '</td>';
+			var field2 = '<td>' + pairs[i].rating + '</td>';
+			var field3 = '<td>' + pairs[i].num_rates + '</td>';
+			tableRows.push(row);
+		} 
+		$("#table").append(tableRows);
 	}
 
 });
