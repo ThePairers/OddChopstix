@@ -10,7 +10,6 @@ module.exports = function(app) {
 	app.get('/api/food', function(req, res) {
 
 		var food_name = req.query.food_name;
-		console.log('food get QUERY:', food_name);		
 		db.Food.findOne({
 			where: {
 				food_name: food_name
@@ -21,9 +20,6 @@ module.exports = function(app) {
 	});
 
 	app.post('/api/food', function(req, res) {
-		console.log(req);
-		console.log(res);
-		console.log('api food post runs')
 		db.Food.create(req.body).then(function(dbFood) {
 			res.json(dbFood);
 		})	
@@ -33,7 +29,6 @@ module.exports = function(app) {
 //------------------------------------------------------//
 	app.get('/api/alcohol', function(req, res) {
 		var alc_name = req.query.alc_name;
-		console.log('alch get QUERY:', alc_name);
 		db.Alcohol.findOne({
 			where: {
 				alc_name: alc_name
@@ -44,7 +39,6 @@ module.exports = function(app) {
 	})
 
 	app.post('/api/alcohol', function(req, res) {
-		console.log('api alc post runs')
 		db.Alcohol.create(req.body).then(function(dbAlch) {
 			res.json(dbAlch);
 		})	
@@ -53,7 +47,6 @@ module.exports = function(app) {
 //------------------------------------------------------//
 	
 	app.get('/api/pairing', function(req, res) {
-		console.log('get pairing api func runs')
 		var food_id = req.query.food_id;
 		var alc_id = req.query.alc_id;
 		db.Pairing.findOne({

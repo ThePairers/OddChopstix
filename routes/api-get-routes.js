@@ -23,7 +23,6 @@ module.exports = function(app) {
 			}
 		}).then(function(dbPost) {
 			res.json(dbPost);
-			console.log(dbPost);
 		})
 	})
 // gets all alcohols with same name
@@ -35,25 +34,10 @@ module.exports = function(app) {
 			}
 		}).then(function(dbPost) {
 			res.json(dbPost);
-			console.log(dbPost);
+
 		})
 	})
-// gets all pairings with same name
-// add functions to request to change name to ids
-	/*
-	app.get('/api/food/:pairing_name', function(req, res) {
 
-		db.Pairing.findAll({
-			where: {
-				alc_id: req.params.alch_id,
-				food_id: req.params.food_id
-			}
-		}).then(function(dbPost) {
-			res.json(dbPost);
-			console.log(dbPost);
-		});
-	});
-	*/
 // ===========================================================
 // DISPLAYS ALL FOOD/ALCOHOL/PAIRINGS IN ROWS ////////////////
 // -----------------------------------------------------------
@@ -70,7 +54,6 @@ module.exports = function(app) {
 		db.Food.findAll({
 		}).then(function(dbPost) {
 			res.json(dbPost);
-			console.log(dbPost);
 		})
 	})
 	
@@ -78,12 +61,10 @@ module.exports = function(app) {
 		db.Alcohol.findAll({
 		}).then(function(dbPost) {
 			res.json(dbPost);
-			console.log(dbPost);
 		})
 	})
 
 	app.get("/api/pairs/food", function(req, res) {
-		console.log(req);
 		var food_id = req.query.food_id;
 		db.Pairing.findAll({
 			where: {
@@ -91,7 +72,6 @@ module.exports = function(app) {
 			}
 		}).then(function(dbPost) {
 			res.json(dbPost);
-			console.log(dbPost);
 		})
 	})
 
@@ -103,7 +83,6 @@ module.exports = function(app) {
 			}
 		}).then(function(dbPost) {
 			res.json(dbPost);
-			console.log(dbPost);
 		})
 	})
 
@@ -115,7 +94,6 @@ module.exports = function(app) {
 			}
 		}).then(function(db) {
 			res.json(db);
-			console.log("ratings sent");
 		})
 	})
 };
