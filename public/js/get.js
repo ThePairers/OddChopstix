@@ -211,7 +211,9 @@ $(document).ready(function() {
 			for (var i = 0; i < data.length; i++) {
 				sum += data[i].rating;
 			}
-			pairs[index].rating = sum / data.length;
+			var avgRating = sum / data.length;
+			var roundedAvgRating = Math.round(100 * roundedAvgRating)/100;
+			pairs[index].rating = roundedAvgRating;
 			pairs[index].num_rates = data.length;
 			console.log(pairs[index]);
 		}).then(function() {
