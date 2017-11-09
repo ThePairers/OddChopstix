@@ -83,7 +83,9 @@ $(document).ready(function() {
 		pairings = [];
 		$.get('/api/pairs', function(data){
 			pairings = data;
-		});
+		}).then(function(){
+			pairings = data;
+		})
 	}
 
 	var htmlFoodDiv = function() {
@@ -93,6 +95,8 @@ $(document).ready(function() {
 				var item = '<div class="image slick-slide slick-active" data-type="food" data-id="' + data[i].id + '"><h5>' + data[i].food_name + '</h5><img src="' + data[i].food_photo + '"></div>'
 				$("#food-search").slick('slickAdd', item);
 			}
+		}).then(function(){
+			food = data;
 		});
 	}
 
@@ -103,11 +107,14 @@ $(document).ready(function() {
 				var item = '<div class="image slick-slide slick-active" data-type="alc" data-id="' + data[i].id + '"><h5>' + data[i].alc_name + '</h5><img src="' + data[i].alc_photo + '"></div>'
 				$("#alcohol-search").slick('slickAdd', item);
 			}
-		});
+		}).then(function(){
+			alcohols = data;
+		})
 	}
 
 	htmlFoodDiv();
 	htmlAlcDiv();
+	htmlPairDiv();
 	
 
 	$('.slick-slider').on('click', '.slick-slide', function(e) {
@@ -196,11 +203,16 @@ $(document).ready(function() {
 
 	function createTable() {
 		var tableRows = [];
+		console.log(pairings);
+		console.log(food);
+		console.log(alcohols);
 		for (var i = 0; i < pairs.length; i++) {
 			var field1 = '<td>' + pairs[i].pair_name + '</td>';
 			var field2 = '<td>' + pairs[i].rating + '</td>';
 			var field3 = '<td>' + pairs[i].num_rates + '</td>';
-			var tableData = field1 + field2 + field3;
+			var pics = getPics(pairs[i].pair_id);
+			var field4 = makePairingPhotoDiv(pics[0], pics[1]);
+			var tableData = field1 + field2 + field3 + field4;
 			var row = '<tr>' + tableData + '</tr>';
 			tableRows.push(row);
 		} 
@@ -209,7 +221,52 @@ $(document).ready(function() {
 	}
 
 	$(".modal").on("hidden.bs.modal", function(){
-    	$(".example-modal-body").html('<table style="width:100%"><thead><tr><th>Name of Pair</th><th>Average Rating</th><th>Number of Ratings</th></tr></thead><tbody id="table-body"></tbody></table>');
+    	$(".example-modal-body").html('<table style="width:100%"><thead><tr><th>Name of Pair</th><th>Average Rating</th><th>Number of Ratings</th><th>Image</th></tr></thead><tbody id="table-body"></tbody></table>');
 	});
+	function getPics(pair_id){
+		console.log(pair_id);
+		var foodpic;
+		var drinkpic;
+		var pairing;
+		console.log(food);
+		for (var i = 0; i < pairings.length; i++) {
+			if (pairings[i].pair_id = pair_id){
+				pairing = pairings[i];
+				break;
+			}
+		}
+		console.log(pairing);
+		for (var i = 0; i < food.length; i++) {
+			if (pairing.food_id = food[i].id){
+				foodpic = food[i].food_photo;
+				break;
+			}
 
+		}
+		for (var i = 0; i < alcohols.length; i++) {
+			if (pairing.food_id = alcohols[i].id){
+				drinkpic = alcohols[i].alc_photo;
+				break;
+			}
+
+		}
+		console.log(foodpic, drinkpic);
+		return [foodpic, drinkpic];
+	
+	}
+	function makePairingPhotoDiv(food_img_src, drink_img_src) {
+
+		var fieldStart = "<td>";
+		var fieldEnd = "</td>";
+		var foodImg = '<img class="' + 'td-img" ' + 'src="' + food_img_src + '">';
+		var drinkImg = '<img class="' + 'td-img" ' + 'src="' + drink_img_src + '">';
+	
+	
+		var pair_photos = fieldStart + foodImg + drinkImg + fieldEnd;
+		console.log(pair_photos);
+		return pair_photos;
+
+
+	}
 });
+
