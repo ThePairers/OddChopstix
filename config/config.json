@@ -1,8 +1,9 @@
 {
   "development": {
     "username": "root",
-    "password": "",
-    "database": "OddChopStix_db",
+
+    "password": "sqlpassword",
+    "database": "oddchopstix_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
