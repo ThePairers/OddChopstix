@@ -212,15 +212,11 @@ table, tr, th, tbody, thead {
 /*image caption*/
 .slick-slide h5 {
   display: none;
-
-
   font-family: 'Roboto', sans-serif;
   font-size: 30px;
   color: firebrick;
   font-weight: bolder;
   width: 80%;
-
-
   height:20%;
   position: absolute;
   text-indent: 15px;
@@ -228,13 +224,12 @@ table, tr, th, tbody, thead {
   bottom: 0;
   left: 0;
   text-align: center
-
   background: white;
   background: linear-gradient(to top, white, 70%, rgba(0, 0, 0, 0) 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
 
+}
 
-
-.slick-slide:hover h5 {
+.slick-slide:hover h5{
   display: block;
 }
 
@@ -282,7 +277,12 @@ table, tr, th, tbody, thead {
 
 }
 
+.td-img {
+  height: 80px;
+  width: 75px;
+  /*padding: 3px;*/
 }
+
 
 .slick-slide img:hover {
   cursor: pointer;
@@ -294,7 +294,7 @@ table, tr, th, tbody, thead {
   cursor: pointer;
  }
 
-}
+
  
 
  #fixed-bottom {
