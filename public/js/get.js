@@ -203,9 +203,7 @@ $(document).ready(function() {
 
 	function createTable() {
 		var tableRows = [];
-		console.log(pairings);
-		console.log(food);
-		console.log(alcohols);
+
 		for (var i = 0; i < pairs.length; i++) {
 			var field1 = '<td>' + pairs[i].pair_name + '</td>';
 			var field2 = '<td>' + pairs[i].rating + '</td>';
@@ -224,11 +222,11 @@ $(document).ready(function() {
     	$(".example-modal-body").html('<table style="width:100%"><thead><tr><th>Name of Pair</th><th>Average Rating</th><th>Number of Ratings</th><th>Image</th></tr></thead><tbody id="table-body"></tbody></table>');
 	});
 	function getPics(pair_id){
-		console.log(pair_id);
+
 		var foodpic;
 		var drinkpic;
 		var pairing;
-		console.log(food);
+
 		for (var i = 0; i < pairings.length; i++) {
 			if (pairings[i].pair_id = pair_id){
 				pairing = pairings[i];
@@ -250,7 +248,7 @@ $(document).ready(function() {
 			}
 
 		}
-		console.log(foodpic, drinkpic);
+
 		return [foodpic, drinkpic];
 	
 	}
@@ -263,7 +261,7 @@ $(document).ready(function() {
 	
 	
 		var pair_photos = fieldStart + foodImg + drinkImg + fieldEnd;
-		console.log(pair_photos);
+
 		return pair_photos;
 
 

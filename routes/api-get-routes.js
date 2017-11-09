@@ -46,7 +46,6 @@ module.exports = function(app) {
 
 		}).then(function(dbPost) {
 			res.json(dbPost);
-			console.log(dbPost);
 		})
 	})
 

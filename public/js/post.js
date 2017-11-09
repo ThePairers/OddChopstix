@@ -182,6 +182,7 @@ $(document).ready(function() {
 			review: newReview
 		};
 		$.post('/api/rating', newRating, function(data) {
+			location.reload();
 		});
 
 	}
