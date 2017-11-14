@@ -1,23 +1,7 @@
-# OddCouples
+# OddChopstix
 
-Function Logic on post.js:
+Add your favorite (and least favorite) pairings!
 
-checkFood runs
- 	if fail
- 		newFoodInputs runs
- 		postNewfood runs
- 	if success
- 		checkAlc runs
-checkAlc runs
-	if fail
- 		newAlcInputs runs
-		postNewAlc runs
- 		checkPairing runs
- 	if success
- 		checkPairing runs
-checkPairing runs
- 	if fail
-		postNewPairing runs
- 		postNewRating runs
- 	if success
- 		postNewRating runs
+Check out other users' reviews to find the perfect pairing for your food or alcoholic beverage
+
+[Website](http://odd-chopstix.herokuapp.com)
