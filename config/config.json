@@ -1,8 +1,7 @@
 {
   "development": {
     "username": "root",
-
-    "password": "",
+    "password": "sqlpassword",
     "database": "oddchopstix_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
@@ -15,10 +14,10 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
+    "username": "qd7wghu3q3bdmfm7",
+    "password": "l34tk48dg3dbzn9e",
+    "database": "ekuqmrniunp1xrqf",
+    "host": "ryvdxs57afyjk41z.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "dialect": "mysql"
   }
 }
