@@ -32,6 +32,7 @@ $(document).ready(function() {
 		foodName = $('#food-input').val().trim();
 		alcName = $('#alc-input').val().trim();
 		rating = document.querySelector('[name="gridRadios"]:checked').value;
+		newReview = $('#review-input').val().trim();
 		checkFood(checkAlc);	
 		$('#newPairingModal').modal('hide');
 	});
@@ -157,17 +158,10 @@ $(document).ready(function() {
 		$('#rating-summary').html(foodName).append(
 			$('<button type="button" class="btn btn-secondary summary-edit-btn" data-type="rating">Edit</button>')
 		);
+		$('#review-summary').html(newReview).append(
+			$('<button type="button" class="btn btn-secondary summary-edit-btn" data-type="review">Edit</button>')
+		);
 		$('#summaryModal').show();
-
-
-
-		// func when user approves of the review
-		$('#submit-summary').on('click', function(e) {
-			e.stopImmediatePropagation();
-			e.preventDefault();
-		$('#summaryModal').hide();
-			postNewFood();
-
 
 	};
 
@@ -178,25 +172,36 @@ $(document).ready(function() {
 
 		switch (dataEditBtn) {
 			case 'food-name':
-			editPairingModal(dataEditBtn, reviewSummary);
+			editPairingModal(dataEditBtn);
 			break;
 
 			case 'food-pic':
-			newFoodInputs(reviewSummary);
+			newFoodInputs();
 			break;
 
 			case 'alc-name':
-			editPairingModal(dataEditBtn, reviewSummary);
+			editPairingModal(dataEditBtn);
 			break;
 
 			case 'alc-photo':
-			newAlcInputs(reviewSummary);
+			newAlcInputs();
 			break;
 
 			case 'rating':
-			editPairingModal(dataEditBtn, reviewSummary);
+			editPairingModal(dataEditBtn);
 			break;
+
+			case 'review':
+			editPairingModal(dataEditBtn);
 		};
+	});
+
+	// func when user approves of the review
+	$('#submit-summary').on('click', function(e) {
+		e.stopImmediatePropagation();
+		e.preventDefault();
+	$('#summaryModal').hide();
+		postNewFood();
 	});
 
 	// displays pairingModal then sends through processes again
