@@ -9,6 +9,7 @@ module.exports = function(app) {
 	app.get('/api/shutter/:query', function(req, res) {
 		var query = String(req.params.query);
 		shutter.image.search(query, function(err, data) {
+			if (err) throw err;
 			res.json(data);
 		});
 	});

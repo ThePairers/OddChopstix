@@ -40,6 +40,10 @@ $(document).ready(function() {
 	function getShutterImg(query) {
 		$.get('/api/shutter/' + query, function(data) {
 
+			// if no pics then display search box to search again
+			if (!data) {
+				
+			}
 			for (var i = 0; i < 5; i++) {
 				var image = data.data[i].assets.large_thumb.url;
 				$('.img-zone').append($("<img class='food-alc-pics' src='" + image + "'>"));
